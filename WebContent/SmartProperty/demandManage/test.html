@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>test</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../asset/css/jquery.dataTables.min.css" rel="stylesheet">
+
+	 <style>
+      .panel {
+      		margin-top: -24px;
+      	}
+
+    </style>
+</head>
+<body style="padding-top: 54px;">
+	
+	<div class="container-fluid">
+
+		<ul class="nav nav-pills nav-justified navbar-fixed-top" role="tablist">
+			<li role="presentation"><a href="#demandsUnFinished" role="tab" id="demandsUnfinished_tab" data-toggle="tab" aria-controls="userSearch"><b>未处理</b></a></li>
+		  	<li role="presentation" class="active"><a href="#demandsFinished" id="demandsFinished_tab" role="tab" data-toggle="tab" aria-controls="waterinfo" aria-expanded="true"><b>已处理</b></a></li>
+		  	
+		</ul>
+
+		<div id="myTabContent" class="tab-content">
+
+			<!--已完成tab-->
+	        <div role="tabpanel" class="tab-pane fade in" id="demandsFinished" aria-labelledBy="demandsFinished_tab">
+
+
+	        	<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title"><b>查询条件</b></h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<label>年份：</label>
+								<select id="years">
+								  	<option value="0">---请选择---</option>
+								</select>
+								&nbsp;
+								<label>房号：</label>
+								<select id="roomId">
+								    <option value="0">---请选择---</option>
+										
+								</select>
+								&nbsp;&nbsp;
+								<button id="serach_button" value="" class="btn btn-primary btn-sm">查询</button>
+							</div>
+						</div>
+					</div>
+				</div>			
+
+			    <div class="panel panel-info">
+			        <div class="panel-heading"><b>客户已处理诉求列表</b></div>
+			        <div class="panel-body">
+			            <div class="table-responsive">
+							
+							<table id="demandsFinished_table" class="table table-bordered table-striped table-hover tablesorter">
+								<thead>
+									<tr class="">
+										<th >投诉时间</th>
+										<th >房号</th>
+										<th >客户姓名</th>
+										<th >电话号码</th>
+										<th >内容事项</th>
+										<th >处理情况</th>
+										<th >接待人</th>
+										<th >回访结果</th>
+										<th >是否关闭</th>
+									<!--	<th width="">删除</th> -->
+									</tr>
+								</thead>
+							
+							</table>
+						</div>	   
+			        </div> 
+			    </div>     
+
+	        </div><!--end of 已经完成tab-->
+
+
+			
+	        <!--未完成tab-->
+	        <div role="tabpanel" class="tab-pane fade" id="demandsUnFinished" aria-labelledBy="demandsUnfinished_tab">
+				
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title"><b>查询条件</b></h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<label>年份：</label>
+								<select id="unfinished_years">
+								  	<option value="0">---请选择---</option>
+								</select>
+								&nbsp;
+								<label>房号：</label>
+								<select id="unfinished_roomId">
+								    <option value="0">---请选择---</option>
+										
+								</select>
+								&nbsp;&nbsp;
+								<button id="unfinished_serachButton" value="" class="btn btn-primary btn-sm">查询</button>
+							</div>
+						</div>
+					</div>
+				</div>			
+
+			    <div class="panel panel-info">
+			        <div class="panel-heading"><b>客户未处理诉求列表</b></div>
+			        <div class="panel-body">
+			            <table id="undodemandtable" class="table table-bordered table-striped table-hover">
+		                        <thead>
+		                            <tr class="active">
+		                                <th>时间</th>
+		                                <th>客户姓名</th>
+		                                <th>房号</th>
+		                                <th>联系方式</th>
+		                                <th>接待人</th>
+		                                <th>问题描述</th>
+		                                <th>处理</th>
+		                            </tr>
+		                        </thead>
+		                    </table>
+			        </div> 
+			    </div>     
+	        	
+	        </div><!--end of 未完成tab-->
+
+			
+
+		</div><!--end of myTabContent-->
+	  
+    </div><!--end of container-->		
+
+	<script src="../asset/js/jquery.min.js"></script>
+	<script src=../"bootstrap/js/bootstrap.min.js"></script>
+	<script src="../bootstrap/js/tab.js"></script>
+	<script src="../asset/js/jquery.dataTables.min.js"></script>
+	<script src="../asset/js/demandManage/test.js"></script>
+	
+
+</body>
+
+</html>

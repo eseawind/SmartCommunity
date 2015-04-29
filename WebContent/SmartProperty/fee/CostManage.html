@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../asset/css/jquery.dataTables.min.css" rel="stylesheet">
+
+	
+	 <style>
+      	.panel {
+      		margin-top: -24px;
+      	}
+
+    </style>
+</head>
+<body style="padding-top: 54px;">
+	
+	<div class="container-fluid">
+
+		<ul class="nav nav-pills nav-justified navbar-fixed-top" role="tablist">
+		  	<li role="presentation" class="active"><a href="#managementfeeinfo" role="tab" id="managementfeeinfo_tab" data-toggle="tab" aria-controls="managementfeeinfo" aria-expanded="true"><b>物业管理费</b></a></li>
+		    <li role="presentation"><a href="#decorateDepositinfo" role="tab" id="decorateDepositinfo_tab" data-toggle="tab"
+			aria-controls="decorateDepositinfo"><b>装修押金</b></a></li> 
+		  	<li role="presentation"><a href="#parkingfeeinfo" role="tab" id="parkingfeeinfo_tab" data-toggle="tab" aria-controls="parkingfeeinfo"><b>停车费用</b></a></li>
+		</ul>
+   <div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title"><b>查询条件</b></h3>
+					</div>
+					<div class="panel-body">
+					    <div class="row">
+					    	<div class="col-md-12">
+					    		<label>楼栋号：</label>
+					    		<select>
+					    			<option value="0">---请选择---</option>
+								    <option value="1">1栋</option>
+								    <option value="2">2栋</option>
+								    <option value="3">3栋</option>
+								    <option value="4">4栋</option>
+								</select>
+								&nbsp;
+								<label>单元号：</label>
+					    		<select>
+					    			<option value="0">---请选择---</option>
+								    <option value="1">1号</option>
+								    <option value="2">2号</option>
+								    <option value="3">3号</option>
+								    <option value="4">4号</option>
+								</select>
+								&nbsp;
+								<label>房间号：</label>
+					    		<select>
+					    			<option value="0">---请选择---</option>
+								</select>
+								&nbsp;
+								<label>年月：</label>
+					    		<select>
+					    			<option value="0">---请选择---</option>
+								    <option value="2011">2011年</option>
+								    <option value="2012">2012年</option>
+								    <option value="2013">2013年</option>
+								    <option value="2014">2014年</option>
+								</select>
+								<select>
+					    			<option value="0">---请选择---</option>
+								    <option value="1">1月</option>
+								    <option value="2">2月</option>
+								    <option value="3">3月</option>
+								    <option value="4">4月</option>
+								    <option value="5">5月</option>
+								    <option value="6">6月</option>
+								    <option value="7">7月</option>
+								    <option value="8">8月</option>
+								    <option value="9">9月</option>
+								    <option value="10">10月</option>
+								    <option value="11">11月</option>
+								    <option value="12">12月</option>
+								</select>
+					    	</div>
+
+					    </div>
+					</div>
+		</div>
+		<div id="myTabContent" class="tab-content">
+			<!--物业管理费tab-->
+	        <div role="tabpanel" class="tab-pane fade in active" id="managementfeeinfo" aria-labelledBy="managementfeeinfo_tab">
+
+	        	<!-- <div class="panel panel-info">
+	        						<div class="panel-heading">
+	        						    <h3 class="panel-title"><b>查询条件</b></h3>
+	        						</div>
+	        						<div class="panel-body">
+	        						    <div class="row">
+	        						    	<div class="col-md-12">
+	        						    		<label>楼栋：</label>
+	        						    		<select>
+	        						    			<option value="0">---请选择---</option>
+	        									    <option value="1">1栋</option>
+	        									    <option value="2">2栋</option>
+	        									    <option value="3">3栋</option>
+	        									    <option value="4">4栋</option>
+	        									</select>
+	        									&nbsp;
+	        									<label>年月：</label>
+	        						    		<select>
+	        						    			<option value="0">---请选择---</option>
+	        									    <option value="2011">2011年</option>
+	        									    <option value="2012">2012年</option>
+	        									    <option value="2013">2013年</option>
+	        									    <option value="2014">2014年</option>
+	        									</select>
+	        									<select>
+	        						    			<option value="0">---请选择---</option>
+	        									    <option value="1">1月</option>
+	        									    <option value="2">2月</option>
+	        									    <option value="3">3月</option>
+	        									    <option value="4">4月</option>
+	        									    <option value="5">5月</option>
+	        									    <option value="6">6月</option>
+	        									    <option value="7">7月</option>
+	        									    <option value="8">8月</option>
+	        									    <option value="9">9月</option>
+	        									    <option value="10">10月</option>
+	        									    <option value="11">11月</option>
+	        									    <option value="12">12月</option>
+	        									</select>
+	        						    	</div>
+	        	
+	        						    </div>
+	        						</div>
+	        					</div> -->
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title"><b>物业管理费信息列表</b></h3>
+					</div>
+					<div class="panel-body">
+					    <div class="table-responsive">
+							<table id="managementfeeinfo_table" class="table table-bordered table-striped table-hover tablesorter">
+								<thead>
+									<tr class="active">
+										<th>住户</th>
+										<th>收费方式</th>
+										<th>收费单价</th>
+										<th>缴费状态</th>
+										<th>收费开始日期</th>
+									</tr>
+								</thead>
+								
+							
+							</table>
+						</div>	
+
+					</div>
+				</div>
+
+	        </div>
+
+		  
+		    <!--装修押金tab-->
+	        <div role="tabpanel" class="tab-pane fade" id="decorateDepositinfo" aria-labelledBy="decorateDepositinfo_tab">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title"><b>-装修押金信息列表</b></h3>
+					</div>
+					<div class="panel-body">
+					    <div class="table-responsive">
+							<table id="decorateDepositinfo_table" class="table table-bordered table-striped table-hover tablesorter">
+								<thead>
+									<tr class="active">
+										<th>住户</th>
+										<th>收费方式</th>
+										<th>收费单价</th>
+										<th>缴费状态</th>
+										<th>收费开始日期</th>
+									</tr>
+								</thead>
+								
+							
+							</table>
+						</div>	
+
+					</div>
+				</div>
+
+	        </div>
+		
+			<!--停车费用tab-->
+	        <div role="tabpanel" class="tab-pane fade" id="parkingfeeinfo" aria-labelledBy="parkingfeeinfo_tab">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title"><b>停车费用信息列表</b></h3>
+					</div>
+					<div class="panel-body">
+					    <div class="table-responsive">
+							<table id="parkingfeeinfo_table" class="table table-bordered table-striped table-hover tablesorter">
+								<thead>
+									<tr class="active">
+										<th>住户</th>
+										<th>收费方式</th>
+										<th>收费单价</th>
+										<th>缴费状态</th>
+										<th>收费开始日期</th>
+									</tr>
+								</thead>
+								
+							
+							</table>
+						</div>	
+
+					</div>
+				</div>
+
+	        </div>
+	      
+    	</div>
+	</div>
+
+	
+		
+    
+	<script src="../asset/js/jquery.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src="../bootstrap/js/tab.js"></script>
+	<script src="../asset/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script type="text/javascript"> 
+
+		$(document).ready(function(){ 
+
+			initData();
+			
+		}); 
+
+		//获取信息
+		function initData()
+		{
+			var html="";
+            var html1 = "";
+			var html2 = "";
+			html += "<tbody>"; 
+			for(var i=0;i<50;i++){
+				html+="<tr>";   
+					html+="<td>"+"Wu"+i+"</td>";
+					html+="<td>"+"方式一"+"</td>";   
+					html+="<td>"+"100"+"</td>";   
+					html+="<td>"+"已缴"+"</td>";  
+					html+="<td>"+"2015-1-21"+"</td>";  
+				html+="</tr>"; 
+
+                html1+="<tr>";   
+					html1+="<td>"+"Wu"+i+"</td>";
+					html1+="<td>"+"方式二"+"</td>";   
+					html1+="<td>"+"100"+"</td>";   
+					html1+="<td>"+"已缴"+"</td>";  
+					html1+="<td>"+"2015-1-21"+"</td>";  
+				html1+="</tr>"; 
+				
+				html2+="<tr>";   
+					html2+="<td>"+"Wu"+i+"</td>";
+					html2+="<td>"+"方式三"+"</td>";   
+					html2+="<td>"+"100"+"</td>";   
+					html2+="<td>"+"已缴"+"</td>";  
+					html2+="<td>"+"2015-1-21"+"</td>";  
+				html2+="</tr>";  
+			}		
+			html += "</tbody>"; 
+			$("#managementfeeinfo_table").append(html);
+			$("#decorateDepositinfo_table").append(html1);
+			$("#parkingfeeinfo_table").append(html2);
+
+			$("#managementfeeinfo_table").dataTable({
+				"aLengthMenu": [[8, 16, 32, 64], [8,16, 32, 64]],   
+				"bFilter":true,   
+				"bSort":true,  
+				"bJQueryUI": false, 
+				"iDisplayLength":8,   
+				"bPaginate" : true,          //翻页功能
+				"bLengthChange" :true,       //改变每页显示数据数量
+				"aaSorting": [[ 2, "desc" ]],//设置第2个元素为默认排序     
+				"aoColumnDefs" : [{  
+			        "bSortable" : false, //指定不支持排序的列  
+			           "aTargets" : [0,1,3]
+			    }], 
+				"oLanguage":{    
+					"sZeroRecords": "对不起，查询不到任何相关数据", 
+   					"sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",    
+					"sInfoEmpty" : "记录数为0",
+					"sSearch": "搜索:", 
+					"sInfoFiltered": "  ，共搜索 _MAX_ 条记录",
+					"sLengthMenu": "每页显示 _MENU_ 条记录",   
+					"oPaginate":{      
+						"sNext":"下一页",     
+						"sPrevious":"上一页"
+					} 
+  
+				} 
+			});
+
+			$("#decorateDepositinfo_table").dataTable({
+				"aLengthMenu": [[8, 16, 32, 64], [8,16, 32, 64]],   
+				"bFilter":true,   
+				"bSort":true,  
+				"bJQueryUI": false, 
+				"iDisplayLength":8,   
+				"bPaginate" : true,          //翻页功能
+				"bLengthChange" :true,       //改变每页显示数据数量
+				"aaSorting": [[ 2, "desc" ]],//设置第2个元素为默认排序     
+				"aoColumnDefs" : [{  
+			        "bSortable" : false, //指定不支持排序的列  
+			           "aTargets" : [0,1,3]
+			    }], 
+				 
+				"oLanguage":{    
+					"sZeroRecords": "对不起，查询不到任何相关数据", 
+   					"sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",    
+					"sInfoEmpty" : "记录数为0",
+					"sSearch": "搜索:", 
+					"sInfoFiltered": "  ，共搜索 _MAX_ 条记录",
+					"sLengthMenu": "每页显示 _MENU_ 条记录",   
+					"oPaginate":{      
+						"sNext":"下一页",     
+						"sPrevious":"上一页"
+					} 
+  
+				} 
+			});
+          
+		  $("#parkingfeeinfo_table").dataTable({
+				"aLengthMenu": [[8, 16, 32, 64], [8,16, 32, 64]],   
+				"bFilter":true,   
+				"bSort":true,  
+				"bJQueryUI": false, 
+				"iDisplayLength":8,   
+				"bPaginate" : true,          //翻页功能
+				"bLengthChange" :true,       //改变每页显示数据数量
+				"aaSorting": [[ 2, "desc" ]],//设置第2个元素为默认排序     
+				"aoColumnDefs" : [{  
+			        "bSortable" : false, //指定不支持排序的列  
+			           "aTargets" : [0,1,3]
+			    }], 
+				 
+				"oLanguage":{    
+					"sZeroRecords": "对不起，查询不到任何相关数据", 
+   					"sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",    
+					"sInfoEmpty" : "记录数为0",
+					"sSearch": "搜索:", 
+					"sInfoFiltered": "  ，共搜索 _MAX_ 条记录",
+					"sLengthMenu": "每页显示 _MENU_ 条记录",   
+					"oPaginate":{      
+						"sNext":"下一页",     
+						"sPrevious":"上一页"
+					} 
+  
+				} 
+			});
+
+		}
+
+		
+    </script> 
+	</body>
+</html>

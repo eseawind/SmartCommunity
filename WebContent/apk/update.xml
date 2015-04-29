@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type='text/xsl href='students.xsl'?>
+
+<update>
+	<version value="1.0.2" />
+	<feature value="1.对话框全新改版，清爽自在" />
+	<feature value="2.修复公告无法查看全部bug" />
+	<feature value="3.优化下拉刷新操作，更加流畅自如" />
+	<feature value="4.调整报修和投诉界面显示，更加合理" />
+	<feature value="5.公告显示5秒自动消失，一分钟后继续显示" />
+	<feature value="6.可以设置公告为已读状态" />
+	<feature value="7.抄表提交成功后显示费用信息" />
+	<feature value="8.投诉增加反馈功能" />
+	<feature value="9.以对话框形式显示提交数据失败原因" />
+	<feature value="10.更多优化期待您下载体验..." />
+</update>

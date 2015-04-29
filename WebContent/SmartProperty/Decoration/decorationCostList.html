@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name ="viewport"  content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            .panel-heading {
+                font-size: 21px;
+            }
+
+            .table {
+                margin-right: 5px;
+                margin-left: 5px;
+            }
+
+            .pagehandle {
+                margin-left: -20px;
+                margin-top: -6px;
+            }
+
+            .pageshow {
+                margin-left: 8px;
+                font-size: 18px;
+            }
+        </style>
+</head>
+<body style="padding-top: 30px;">
+    <div class="container-fluid">
+        <div id="myTabContent" class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="UnfinishRepair" aria-labelledby="UnFinishedRepair_tab">
+                <div class="panel panel-info">
+                    <div class="panel-heading text-center">
+                        <b>装修信息</b>
+                    </div>
+                    <div class="panel-body">
+                        <table id="decorationCost_table" class="table table-bordered table-striped table-hover tablesorter">
+                            <thead>
+                                <tr class="active">
+                                    <th>房号</th>
+                                    <th>业主姓名</th>
+                                    <th>日期</th>
+                                    <th>装修押金</th>
+                                    <th>垃圾清运费</th>
+                                    <th>电费</th>
+                                    <th>水费</th>
+                                    <th>出入证费</th>
+                                    <th>备注</th>
+                                </tr>
+                            </thead>
+                            <tbody id="decorationCost_tableBody">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <span id="sp1" class="pageshow"></span>
+                        <ul class="pagination pull-right pagehandle" id="pagination1"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../asset/js/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/tab.js"></script>
+    <script src="../asset/js/jqPaginator.js"></script>
+    <script src="../asset/js/table.js"></script>
+    <script src="../asset/js/getData.js"></script>
+	<script src="../asset/js/serverInterface.js"></script>
+    <script src="../asset/js/Property/decorationCostList.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- spring 配置 mapper 的文件 -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd ">
+
+	<!-- 基类 bean 其它 bean 继承这个 bean -->
+	<bean id="baseBean" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		abstract="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+
+	<bean id="testMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.RoomownerMapper"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- notice mapper -->
+	<bean id="noticeMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.NoticeMapper"></property>
+	</bean>
+	<!-- repair mapper -->
+	<bean id="repairMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.RepairMapper"></property>
+	</bean>
+	<bean id="repairimagesMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.RepairimagesMapper"></property>
+	</bean>
+	<bean id="deviceMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.DeviceMapper"></property>
+	</bean>
+	<bean id="devicefaultMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.DevicefaultMapper"></property>
+	</bean>
+
+	<bean id="meterMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.MeterMapper"></property>
+	</bean>
+	<bean id="roomMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.RoomMapper"></property>
+	</bean>
+	<bean id="complaintsMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.ComplaintsMapper"></property>
+	</bean>
+	<bean id="complaintsimagesMapper" parent="baseBean">
+		<property name="mapperInterface"
+			value="com.smartcommunity.mapper.ComplaintsimagesMapper"></property>
+	</bean>
+	<bean id="roomownerMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.RoomownerMapper"></property>
+	</bean>
+	<bean id="buildingMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.BuildingMapper"></property>
+	</bean>
+	<bean id="decorateMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.DecorateMapper"></property>
+	</bean>
+
+	<bean id="decoratefeeMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.DecoratefeeMapper"></property>
+	</bean>
+	<bean id="userpassMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.UserpassMapper"></property>
+	</bean>
+
+	<bean id="userrolejoinMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.UserrolejoinMapper"></property>
+	</bean>
+	<bean id="accountRecordMapper" parent="baseBean">
+		<property name="mapperInterface"
+			value="com.smartcommunity.mapper.AccountRecordMapper"></property>
+	</bean>
+	<bean id="accountMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.AccountMapper"></property>
+	</bean>
+	<bean id="userNoticeMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.UserNoticeMapper"></property>
+	</bean>
+		<bean id="resourcesMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.ResourcesMapper"></property>
+	</bean>	
+	<!--  tongyong -->
+		<bean id="tongYongMapper" parent="baseBean">
+		<property name="mapperInterface" value="com.smartcommunity.mapper.TongYongMapper"></property>
+	</bean>
+</beans>  

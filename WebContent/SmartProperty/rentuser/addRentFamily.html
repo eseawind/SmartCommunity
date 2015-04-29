@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>业主家庭成员管理</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+	 <style>
+      	.page-header {
+      		margin-top: -6px;
+      		font-size: 20px;
+      	}
+      	.panel-heading {
+      		font-size: 21px;
+      	}
+      	label {
+      		font-size: 18px;
+      	}
+      	.col-marginleft {
+      		margin-left: 0px;
+      	}
+      	.page-margintop {
+      		margin-top: 10px;
+      	}
+      	label {
+      		font-size: 14px;
+      	}
+      	.btn {
+      		margin-top: 25px;
+      		margin-left: 12px;
+      	}
+      	.row {
+       		margin-top: 0px;
+       }
+    </style>
+</head>
+<body style="padding-top: -10px;">
+
+	<div class="container-fluid">
+		<div class="panel panel-info">
+			<div class="panel-heading text-center">
+				<b>业主家庭成员管理</b>
+			</div>
+			<div class="panel-body pull-center"> 
+				<div class="page-header">
+				    <b >家庭成员列表</b>
+				</div>
+				<div class="table-responsive">
+					<table id="notice_table" class="table table-bordered table-striped table-hover tablesorter">
+						<thead>
+							<tr class="active">
+								<th width="10%">姓名</th>
+								<th width="10%">与户主关系</th>
+								<th width="15%">身份证号</th>
+								<th width="10%">性别</th>
+								<th width="10%">联系电话</th>
+								<th width="15%">QQ号</th>
+								<th width="10%">查看详细</th>
+								<th width="10%">修改</th>
+								<th width="10%">删除</th>
+							</tr>
+						</thead>
+						
+						<tbody> 
+	                        <tr >  
+	                            <td class="">张三</td> 
+	                            <td class="">父亲</td> 
+	                            <td class="">123456789098765432</td> 
+	                            <td class="">男</td> 
+	                            <td class="">12345678909</td> 
+	                            <td class="">2345676543</td> 
+	                            <td class=""><a>查看详细</a></td> 
+	                            <td class=""><a>修改</a></td> 
+	                            <td class=""><a>删除</a></td> 
+	                        </tr> 
+	                        <tr >  
+	                            <td class="">李四</td> 
+	                            <td class="">母亲</td> 
+	                            <td class="">123456789098765432</td> 
+	                            <td class="">男</td> 
+	                            <td class="">12345678909</td> 
+	                            <td class="">2345676543</td> 
+	                            <td class=""><a>查看详细</a></td> 
+	                            <td class=""><a>修改</a></td> 
+	                            <td class=""><a>删除</a></td> 
+	                        </tr>                                  
+						</tbody>
+					
+					</table>
+				</div>	
+
+
+				<div class="page-header">
+				    <b >家庭成员信息</b>
+				</div>
+				<form class="form-horizontal" name="familyForm" role="form">
+				    
+					<div class="row">
+						<div class="col-md-2 col-md-offset-1">
+							<label class="">姓名</label>
+							<input type="text" class="form-control input-sm" id="family_name">
+						</div>
+						<div class="col-md-2">
+							<label class="">与户主关系</label>
+							<select id="relationselect" class="form-control input-sm">
+								<option value="pleaseSelect">---请选择---</option>									    
+							</select>
+						</div>
+						<div class="col-md-2">
+							<label class="">身份证号</label>
+							<input type="text" class="form-control input-sm" id="family_id">
+						</div>
+						<div class="col-md-4 ">
+							<label class="">住址</label>
+							<input type="text" class="form-control input-sm" id="family_liveplace">
+						</div>
+				    </div>
+
+				    <div class="row">
+				    	<div class="col-md-2 col-md-offset-1">
+							<label class="">性别</label>
+							<select id="family_sex" class="form-control input-sm">
+								<option value="男">男</option>
+								<option value="女">女</option>	    
+							</select>
+						</div>
+						<div class="col-md-2">
+							<label class="">民族</label>
+							<input type="text" class="form-control input-sm" id="family_nation">
+						</div>
+				    	<div class="col-md-2 ">
+							<label class="">政治面貌</label>
+							<input type="text" class="form-control input-sm" id="family_political">
+						</div>
+						<div class="col-md-2">
+							<label class="">籍贯</label>
+							<input type="text" class="form-control input-sm" id="family_nativeplace">
+						</div>
+						<div class="col-md-2">
+							<label class="">户口所在地</label>
+							<input type="text" class="form-control input-sm" id="family_birthplace">
+						</div>
+						
+				    </div> 
+
+				    <div class="row">
+				    	<div class="col-md-2 col-md-offset-1">
+							<label class="">联系电话</label>
+							<input type="text" class="form-control input-sm" id="family_phone">
+						</div>
+						<div class="col-md-2">
+							<label class="">QQ号</label>
+							<input type="text" class="form-control input-sm" id="family_qq">
+						</div>
+						<div class="col-md-2">
+							<label class="">文化程度</label>
+							<input type="text" class="form-control input-sm" id="family_education">
+						</div>
+						
+						<div class="col-md-4">
+							<label class="">工作单位</label>
+							<input type="text" class="form-control input-sm" id="family_workplace">
+						</div>
+				    </div> 
+
+				    <div class="row">
+						<div class="col-md-2 col-md-offset-1">
+							<label class="">婚姻状况</label>
+							<input type="text" class="form-control input-sm" id="family_marrystate">
+						</div>
+						
+				    	<div class="col-md-1 ">
+							<label class="">是否参保</label>
+							<select id="isInsured" class="form-control input-sm">
+								<option value="yes">是</option>
+								<option value="not">否</option>	    
+							</select>
+						</div>
+						<div class="col-md-1">
+							<label class="">是否低保</label>
+							<select  id="isLowInsured" class="form-control input-sm">
+								<option value="yes">是</option>
+								<option value="not">否</option>		    
+							</select>
+						</div>
+						<div class="col-md-1">
+							<label class="">是否残疾</label>
+							<select id="isDisability" class="form-control input-sm">
+								<option value="yes">是</option>
+								<option value="not">否</option>	    
+							</select>
+						</div>
+						<div class="col-md-1">
+							<label class="">是否军列</label>
+							<select id="isJunLie" class="form-control input-sm">
+								<option value="yes">是</option>
+								<option value="not">否</option>		    
+							</select>
+						</div>
+
+						<div class="col-md-4">
+							<label class="">特长爱好</label>
+							<input type="text" class="form-control input-sm" id="family_interest">
+						</div>
+				    </div>   
+				    
+				    <div class="row">
+				    	<div class="col-md-2 col-md-offset-1">
+							<label class="">入住时间</label>
+							<input type="text" class="form-control input-sm" readonly id="family_intime">
+						</div>
+						<div class="col-md-2">
+							<label class="">迁出时间</label>
+							<input type="text" class="form-control input-sm" readonly id="family_outtime">
+						</div>
+						<div class="col-md-2">
+							<label class="">是否纸质照片</label>
+							<div class="row">
+								<div class="col-md-11 pull-center">
+								   <input type="checkbox" id="whether_familyphoto">
+								   <label class="">是否纸质照片</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label class="">备注(车辆)</label>
+							<textarea id="family_remark" class="form-control input-sm" rows="1"></textarea>
+						</div>
+				    </div> 
+
+				    <div class="row">
+				    	<div class="col-md-3 col-md-offset-5">
+							 <button id="submit_familyinfo_button" type="button" class="btn btn-info btn-lg">添加</button>
+							 <input type="reset" value="重置" class="btn btn-danger btn-lg">
+						</div>
+						<div class="col-md-1 col-md-offset-2">
+							<a href="searchOwnerInfo.html" class="btn"><h4>返回</h4></a>
+						</div>
+				    </div>
+
+				</form>    
+			</div>			
+		</div>
+	</div>
+
+	<script src="../asset/js/jquery.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src="../asset/js/jquery-ui.custom.min.js"></script>
+	<script src="../asset/js/datePicker.js"></script>
+	<script src="../asset/js/ownerManage/addOwnerFamily.js"></script>
+	
+</body>
+
+</html>

@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<!-- struts2 的配置文件 -->
+<struts>
+
+	<!-- 指定由 spring 负责 action 对象的创建 -->
+	<constant name="struts.objectFactory" value="spring" />
+
+	<!-- 设置匹配 *.action 的请求由struts2 处理,防止Struts2将无后缀请求亦当成正常的Action请求处理 -->
+	<constant name="struts.action.extension" value="action" />
+
+	<!-- 设置Struts2应用是否处于开发模式，通常在开发调试阶段设为true,正式上线后可设为false -->
+	<constant name="struts.devMode" value="true" />
+
+	<!-- 每次HTTP请求系统都重新加载资源文件，有助于开发 -->
+	<constant name="struts.i18n.reload" value="true" />
+
+	<!-- struts配置文件改动后，是否重新加载 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+
+
+	<!-- 设置浏览器是否缓存静态内容 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+
+	<!-- 设置Web应用的默认编码集为UTF-8 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+
+	<!-- 让struts2支持动态方法调用 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+
+	<!-- Action名称中是否还是用斜线 -->
+	<constant name="struts.enable.SlashesInActionNames" value="false" />
+
+	<!-- 允许标签中使用表达式语法 -->
+	<constant name="struts.tag.altSyntax" value="true" />
+
+	<!-- 对于WebLogic,Orion,OC4J此属性应该设置成true -->
+	<constant name="struts.dispatcher.parametersWorkaround" value="false" />
+
+	<!-- 设置Web应用的默认Locale为zh_CN -->
+	<constant name="struts.locale" value="zh_CN" />
+
+	<!-- 上传单个文件的最大大小 -->
+	<constant name="struts.multipart.maxSize" value="55000000" />
+	<!-- 设置Struts2应用的国际化资源文件，多个文件中间可用逗号分隔 -->
+	<constant name="struts.custom.i18n.resources" value="messageResource" />
+
+	<!-- 设置Struts2允许静态方法调用 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+
+	<!-- 设置Struts2的默认主题为simple -->
+	<constant name="struts.ui.theme" value="simple" />
+
+	<!-- 拦截器配置 -->
+
+	<!-- 以下是 package 与 action 的配置 -->
+	<package name="base" extends="struts-default">
+		<!-- 配置自定义拦截器 -->
+		<interceptors>
+			<interceptor name="cookieInterceptor"
+				class="com.smartcommunity.interceptor.CookieInterceptor" />
+
+			<interceptor name="propertyInterceptor"
+				class="com.smartcommunity.interceptor.PropertyInterceptor" />
+				<!-- 显示参数与参数值 -->
+			<interceptor name="displayParameters"
+				class="com.smartcommunity.interceptor.DisplayParameters" />
+			<interceptor name="exceptionInterceptor"
+				class="com.smartcommunity.interceptor.ExceptionInterceptor">
+
+				<param name="logLevel">error</param>
+			</interceptor>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="interceptorStack">
+				<!-- 顺序执行 -->
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="cookieInterceptor" />
+				<interceptor-ref name="propertyInterceptor" />
+				<interceptor-ref name="displayParameters" />
+				<interceptor-ref name="exceptionInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 定义默认拦截器 -->
+		<default-interceptor-ref name="interceptorStack" />
+
+		<!-- 定义全局 result -->
+		<global-results>
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+			<result name="failed">/result/false.json</result>
+			<result name="sql">/exception/sqlException.json</result>
+			<result name="exception">/exception/javaException.json</result>
+			<result name="tologin">/result/tologin.json</result> <!-- type="redirect" -->
+			<result name="permision">/result/permision.json</result>
+		</global-results>
+
+		<!-- 定义全局异常映射 -->
+		<global-exception-mappings>
+			<exception-mapping result="sql" exception="java.sql.SQLException"></exception-mapping>
+			<exception-mapping exception="java.lang.Exception"
+				result="exception" />
+		</global-exception-mappings>
+	</package>
+	<!-- 测试用 -->
+	<package name="test" namespace="/test" extends="base">
+		<action name="test" class="testAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+
+		</action>
+	</package>
+
+	<!-- 上传与下载文件 -->
+	<package name="updownload" namespace="/updownload" extends="struts-default">
+		<result-types>
+			<result-type name="multistream"
+				class="com.smartcommunity.util.MultiStreamResult"></result-type>
+		</result-types>
+		<action name="uploadImage" class="uploadAction">
+			<param name="maximumSize">52428800</param>
+			<result name="success" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<action name="downloadImage" class="downloadAction">
+			<result name="success" type="multistream">
+				<param name="contentType">${contentType}</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">4096</param>
+				<param name="contentDisposition">filename="${filename}"</param>
+				<param name="contentLength">${contentLength}</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 公告管理包 -->
+	<package name="notice" namespace="/notice" extends="base">
+		<!-- 替换默认的 modelDriven <interceptors> <interceptor name="modelDriven" class="com.smartcommunity.interceptor.PageModelDrivenInterceptor"></interceptor> 
+			<interceptor name="params" class="com.smartcommunity.interceptor.PageParametersInterceptor"></interceptor> 
+			</interceptors> -->
+
+		<!-- 发布公告接口 -->
+		<action name="publishNotice" class="noticeAction" method="publishNotice">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 以页的形式列出公告信息 -->
+		<action name="listNoticeByPage" class="noticeAction" method="listNoticeByPage">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 设置公告状态 -->
+		<action name="setState" class="noticeAction" method="setIsReaded">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+				<!-- 通过关键字查询公告 -->
+		<action name="listNoticeByKeyWords" class="noticeAction" method="listNoticeByKeyWords">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+	</package>
+
+	<!-- 报修管理包 -->
+	<package name="repair" namespace="/repair" extends="base">
+		<!-- <interceptors> <! 替换默认的 modelDriven <interceptor name="modelDriven" 
+			class="com.smartcommunity.interceptor.PageModelDrivenInterceptor"></interceptor> 
+			<interceptor name="params" class="com.smartcommunity.interceptor.PageParametersInterceptor"></interceptor> 
+			</interceptors> -->
+		<!-- 查询报修信息接口 -->
+		<action name="listRepairInfoByPage" class="repairAction"
+			method="listRepariInfoByPage">
+
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 列出所有设备 -->
+		<action name="listDevices" class="repairAction" method="listDevices">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 列出设备可能出现的故障信息 -->
+		<action name="listDeviceFault" class="repairAction" method="listDeviceFault">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 提交报修信息 -->
+		<action name="submitRepairInfo" class="repairAction" method="submitRepairInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 提交用户反馈信息 -->
+		<action name="submitFeedback" class="repairAction" method="submitFeedback">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 删除报修信息 -->
+		<action name="cancelRepair" class="repairAction" method="cancelRepair">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 设置报修状态 -->
+		<action name="setState" class="repairAction" method="setState">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 抄表管理包 -->
+	<package name="meter" namespace="/meter" extends="base">
+
+		<!-- 提交水电费接口 -->
+		<action name="submitMeterInfo" class="meterAction" method="submitMeterInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 查询水电费接口 -->
+		<action name="listMeterInfo" class="meterAction" method="listMeterInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 缴费接口 -->
+		<action name="paying" class="meterAction" method="paying">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+			<!-- 查询余额 -->
+		<action name="getAccount" class="meterAction" method="getAccount">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+
+	</package>
+
+	<!-- 通用包 -->
+	<package name="tmeter" namespace="/tmeter" extends="struts-default">
+
+		<!-- 缴费接口 -->
+		<action name="list" class="tMeterAction" method="list">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+
+	</package>
+	<!-- 楼宇 房间信息管理包 -->
+	<package name="building" namespace="/building" extends="base">
+		<!-- 提交楼宇信息 -->
+		<action name="submitBuildingInfo" class="buildingAction"
+			method="submitBuildingInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 更新楼宇信息 -->
+		<action name="updateBuildingInfo" class="buildingAction"
+			method="updateBuildingInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 查询楼宇信息 -->
+		<action name="listBuildingInfoByPage" class="buildingAction"
+			method="listBuildingInfoByPage">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 删除楼宇信息 -->
+		<action name="deleteBuildingInfo" class="buildingAction"
+			method="deleteBuildingInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<!-- 提交房屋信息 -->
+		<action name="submitRoomInfo" class="buildingAction" method="submitRoomInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 更新房屋信息 -->
+		<action name="updateRoomInfo" class="buildingAction" method="updateRoomInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 查询房间信息 -->
+		<action name="listRoomInfoByPage" class="buildingAction"
+			method="listRoomInfoByPage">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>		
+				<!-- 根据房间条件查询房间信息 -->
+		<action name="listRoomInfoByCondition" class="buildingAction"
+			method="listRoomInfoByCondition">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>	
+		<!-- 删除房间信息 -->
+		<action name="deleteRoomInfo" class="buildingAction"
+			method="deleteRoomInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<!-- 查询楼宇编号与名称 -->
+		<action name="listBuildingNumber" class="buildingAction"
+			method="listBuildingNumber">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 查询单元号 -->
+		<action name="listUnitNumber" class="buildingAction" method="listUnitNumber">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+				<!-- 查询房间号 -->
+		<action name="listRoomNumber" class="buildingAction" method="listRoomNumber">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	</package>
+	<!-- 投诉信息管理 -->
+	<package name="complaints" namespace="/complaints" extends="base">
+
+		<!-- 查询投诉信息接口 -->
+		<action name="submitComplaints" class="complaintsAction"
+			method="submitComplaints">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 查询投诉信息接口 -->
+		<action name="listComplaints" class="complaintsAction" method="listComplaints">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 删除投诉信息 -->
+		<action name="cancelComplaints" class="complaintsAction" method="cancelComplaints">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+				<!-- 提交投诉反馈 -->
+		<action name="submitFeedback" class="complaintsAction" method="submitFeedback">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 用户信息管理 -->
+	<package name="userManage" namespace="/userManage" extends="base">
+
+		<!-- 提交业主信息接口 -->
+		<action name="submitRoomownerInfo" class="userManageAction"
+			method="submitRoomownerInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 修改业主信息 -->
+		<action name="updateRoomownerInfo" class="userManageAction"
+			method="updateRoomownerInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+				<!-- 查询业主信息 -->
+		<action name="list" class="userManageAction"
+			method="listRoomownerInfo">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 删除业主信息 -->
+		<action name="delete" class="userManageAction"
+			method="deleteRoomowner">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 登陆 -->
+		<action name="login" class="userManageAction" method="login">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 登出  -->
+		<action name="logout" class="userManageAction" method="logout">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+	
+		<!-- 添加物业人员登陆密码与姓名 -->
+		<action name="addManager" class="userManageAction" method="addManager">
+			<result name="success" type="stream">
+				<param name="contentTyxpe">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+			<!-- 查询电话号 -->
+		<action name="getTelephone" class="userManageAction" method="getTelephone">
+			<result name="success" type="stream">
+				<param name="contentTyxpe">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+				<action name="getUserDetails" class="userManageAction" method="getUserDetails">
+			<result name="success" type="stream">
+				<param name="contentTyxpe">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+	</package>
+	
+	<!-- 装修信息管理 -->
+	<package name="decorate" namespace="/decorate" extends="struts-default">
+	<result-types>
+			<result-type name="multistream"
+				class="com.smartcommunity.util.MultiStreamResult"></result-type>
+		</result-types>
+		<!-- 提交装修信息接口 -->
+		<action name="submitDecorate" class="decorateAction" method="submitDecorate">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<!-- 提交装修费用信息接口 -->
+		<action name="submitDecoratefee" class="decorateAction" method="submitDecoratefee">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 查询装修信息接口 -->
+		<action name="listDecorate" class="decorateAction" method="listDecorate">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 查询装修费用信息接口 -->
+		<action name="listDecoratefee" class="decorateAction" method="listDecoratefee">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+
+	</package>
+	<package name="android" namespace="/android" extends="struts-default">
+			<result-types>
+			<result-type name="multistream"
+				class="com.smartcommunity.util.MultiStreamResult"></result-type>
+		</result-types>
+			<action name="update" class="androidUpdateAction" method="checkUpdate">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>		
+		<!-- 获取当前版本与特性 -->
+		<action name="getVersion" class="androidUpdateAction" method="getLatestVersion">
+			<result name="success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+			<!-- 下载最新版本 -->
+	<action name="download" class="androidUpdateAction" method="download">
+			<result name="success" type="multistream">
+				<param name="contentType">${contentType}</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">4096</param>
+				<param name="contentDisposition">filename="${filename}"</param>
+				<param name="contentLength">${contentLength}</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<head>
+	<title>修改用户信息</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+	 <style>
+      	.page-header {
+      		margin-top: -6px;
+      		font-size: 20px;
+      	}
+      	.panel-heading {
+      		font-size: 21px;
+      	}
+      	label {
+      		font-size: 18px;
+      	}
+      	.col-marginleft {
+      		margin-left: 0px;
+      	}
+      	.page-margintop {
+      		margin-top: 10px;
+      	}
+      	label {
+      		font-size: 14px;
+      	}
+      	.btn {
+      		margin-top: 25px;
+      		margin-left: 12px;
+      	}
+      	.row {
+       		margin-top: 0px;
+       }
+    </style>
+</head>
+<body style="padding-top: -10px;">
+
+	<div class="container-fluid">
+		<div class="panel panel-info">
+			<div class="panel-heading text-center">
+				<b>修改用户信息</b>
+			</div>
+			<div class="panel-body pull-center"> 
+				
+				<form class="form-horizontal" id="uploadForm" name="roomowner" role="form">
+				    
+					<div class="row">
+						<div class="col-md-2 col-md-offset-1">
+							<label class="">房间号</label>
+							<input type="text" class="form-control input-sm" name="roomowner.roomnumber" id="roomnumber">
+						</div>
+						<div class="col-md-2">
+							<label class="">用户姓名</label>
+							<input type="text" class="form-control input-sm" name="roomowner.name" id="name">
+						</div>
+						<div class="col-md-2">
+							<label class="">性别</label>
+							<select id="sex" name="roomowner.sex" class="form-control input-sm">
+								<option value="男">男</option>
+								<option value="女">女</option>	    
+							</select>
+						</div>
+						<div class="col-md-2">
+							<label class="">身份证号</label>
+							<input type="text" class="form-control input-sm" name="roomowner.identity" id="identity">
+						</div>
+						<div class="col-md-2 ">
+							<label class="">籍贯</label>
+							<input type="text" class="form-control input-sm" name="roomowner.nativeplace" id="nativeplace">
+						</div>
+				    </div>
+
+				    <div class="row">
+						<div class="col-md-4 col-md-offset-1">
+							<label class="">户口所在地</label>
+							<input type="text" class="form-control input-sm" name="roomowner.registeredresidence" id="registeredresidence">
+						</div>
+				    	<div class="col-md-2 ">
+							<label class="">民族</label>
+							<input type="text" class="form-control input-sm" name="roomowner.nation" id="nation">
+						</div>
+						<div class="col-md-2">
+							<label class="">政治面貌</label>
+							<input type="text" class="form-control input-sm" name="roomowner.politicalaffiliation" id="politicalaffiliation">
+						</div>
+						<div class="col-md-2">
+							<label class="">文化程度</label>
+							<input type="text" class="form-control input-sm" name="roomowner.educationlevel" id="educationlevel">
+						</div>
+						
+				    </div> 
+
+				    <div class="row">
+				    	<div class="col-md-2 col-md-offset-1">
+							<label class="">工作单位</label>
+							<input type="text" class="form-control input-sm" name="roomowner.company" id="company">
+						</div>
+						<div class="col-md-2">
+							<label class="">婚姻状况</label>
+							<input type="text" class="form-control input-sm" name="roomowner.maritalstatus" id="maritalstatus">
+						</div>
+						<div class="col-md-2">
+							<label class="">特长爱好</label>
+							<input type="text" class="form-control input-sm" name="roomowner.hobbies" id="hobbies">
+						</div>
+						
+						<div class="col-md-2">
+							<label class="">联系电话</label>
+							<input type="text" class="form-control input-sm" name="roomowner.telephone" id="telephone">
+						</div>
+						<div class="col-md-2">
+							<label class="">QQ号</label>
+							<input type="text" class="form-control input-sm" name="roomowner.qq" id="qq">
+						</div>
+				    </div> 
+
+				    <div class="row">
+						<div class="col-md-2 col-md-offset-1">
+							<label class="">邮箱</label>
+							<input type="text" class="form-control input-sm" name="roomowner.mail" id="mail">
+						</div>
+						
+						<div class="col-md-2">
+							<label class="">入住时间</label>
+							<input type="text" class="form-control input-sm" name="roomowner.immigratedate" readonly id="immigratedate">
+						</div>
+						<div class="col-md-2">
+							<label class="">迁出时间</label>
+							<input type="text" class="form-control input-sm" name="roomowner.quitdate" readonly id="quitdate">
+						</div>
+				    					
+						<div class="col-md-2">
+							<label class="">产权人</label>
+							<input type="text" class="form-control input-sm" name="roomowner.propertyowner" id="propertyowner">
+						</div>
+						<div class="col-md-2">
+							<label class="">产权人身份证号</label>
+							<input type="text" class="form-control input-sm" name="roomowner.propertyowneridentity" id="propertyowneridentity">
+						</div>
+				    </div> 
+
+				    <div class="row">
+				    	<div class="col-md-3 col-md-offset-5">
+							 <button id="submit_roomowner_button" type="button" class="btn btn-info btn-lg">提交修改</button>
+							 <input type="reset" value="重置" class="btn btn-danger btn-lg">
+						</div>
+						
+				    </div>
+
+				</form>    
+			</div>			
+		</div>
+	</div>
+
+	<script  src="../asset/js/jquery-1.11.1.min.js"></script>
+	<script  src="../asset/js/jquery-ui.custom.min.js"></script>
+	<script  src="../bootstrap/js/bootstrap.min.js"></script>
+	
+	<script  src="../asset/js/getData.js"></script>
+	<script  src="../asset/js/datePicker.js"></script>
+	<script  src="../asset/js/ownerManage/changePeopleInfo.js"></script>
+	
+</body>
+
+</html>

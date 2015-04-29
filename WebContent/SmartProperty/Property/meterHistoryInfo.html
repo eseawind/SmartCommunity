@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>水电表历史信息查询_李广康</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!--加了下面这个才能把table显示的完整-->
+	<link href="../asset/css/jquery.dataTables.min.css" rel="stylesheet">
+	
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+
+	<link href="../asset/css/styles.css" rel="stylesheet">
+
+
+
+
+	<!--此处style什么用处？？？-->
+	
+</head>
+
+<body style="padding-top: 10px;">
+
+	<div class="container-fluid">
+			<div class="panel panel-info">
+
+				<div class="panel-heading text-center"><h4><b>水电表历史信息查询</b></h3></div>
+					<div class="panel-body">
+						<div class="container-fluid">
+			
+						<form id="uploadForm" action="" method="post" role="form">
+              
+					<div class="form-group">
+						<div class="row">
+							
+							<!-- <div class="col-md-2 col-md-offset-1">
+							<label class="">楼栋</label>
+							<input type="text" class="form-control" id="owner_buliding">
+						</div> -->
+							<div class="col-sm-2 ">										<!-- input-sm -->
+								<label >楼栋号</label>
+								<select style="width:150px" id="meter_history_build" name="build" class="form-control " >
+								  	<option value="">---请选择---</option>
+								</select>
+							</div> 
+
+							<div class="col-sm-2 ">
+								<label>单元号</label>
+								<select style="width:150px" id="meter_history_unit"  name="unit" class="form-control " >
+								    
+									<option value="">---请选择---</option>	
+								</select>
+								 </div>
+
+							<div class="col-sm-2 ">
+								<label>房间号</label>
+								<select style="width:150px" id="meter_history_room"  name="room" class="form-control " >
+								    <option value="">---请选择---</option>
+								</select>
+							</div>
+
+							<div class="col-md-2 ">
+								<label >抄表日期</label>
+									<input type="text"  readonly id="meter_history_start" class="form-control " >
+							</div>
+
+							<!-- <label >抄表日期（截止）</label>
+								<input  type="text"  readonly id="meter_history_end">	
+								</div> -->
+							<!-- </div>
+							</div> -->
+
+									<!-- <div class="form-group">
+							<div class="row">
+							
+								<label  >表计类别</label>
+									<select id="meter_history_type" name="repair.roomnumber" >
+										<option value="pleaseSelect">---请选择---</option>
+									</select>
+
+								<label >抄表状态</label>
+									<select id="meter_history_state" name="repair.roomnumber" >
+										<option value="pleaseSelect">---请选择---</option>
+									</select>
+
+								<label >抄表人</label>
+									<input type="text" id="meter_history_author"  > 
+									
+						</div>
+							 -->
+						<!-- 
+						<div class="row">
+						<div class="col-md-2 ">
+							<label >抄表日期</label>
+								<input type="text"  readonly id="meter_history_start" class="form-control " >
+								
+
+							<label >抄表日期（截止）</label>
+							
+								<input  type="text"  readonly id="meter_history_end">
+								
+						
+						</div> -->
+
+
+<br>
+	
+							<div class="col-md-2 col-md-offset-1">																<!-- btn-sm -->
+								<input type="button" id="meter_history_search" value="查询" class="btn btn-primary ">
+							 <!-- </div>
+							 <div class="col-md-1 "> -->
+								<input type="reset" value="重置" class="btn btn-danger col-md-offset-1">
+							</div>
+						</div>
+					 </div>
+</form>
+
+					</div>
+				</div> 
+			</div> 
+
+		</div>  
+	</div> 
+
+
+		<div class="container-fluid">
+			<div class="panel panel-info">
+
+				<div class="panel-heading">
+					    <h2 class="panel-title"><b>结果列表</b></h3>
+				</div>
+
+				<div class="form-group">
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table id="meter_history_table" class="table table-bordered table-striped table-hover tablesorter" >
+								<thead>
+									<tr class="active">
+									<th width="15%">房间号</th>
+									<!-- <th>产权人</th> -->
+									<th width="10%">表计类别</th>
+									<!-- <th>表号</th> -->
+									<th width="10%">抄表状态</th>
+									 <!-- <th>开始时间</th>
+									<!-- <th>截止时间</th> -->
+									<!-- <th>起数</th>
+									<th>止数</th> --> 
+									<th width="20%">读表时间</th>
+									<th width="20%">读表数据</th>
+								
+									<th width="10%">用量</th>
+									<th width="15%">读表人</th>
+									</tr>
+								</thead>	
+								<tbody id="meter_history_tableBody">
+									 <tr>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									   <td></td>
+									  <!-- <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td> -->
+									
+									</tr> 
+								</tbody> 
+
+
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	<script src="../asset/js/jquery-1.11.1.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	
+	
+    <script src="../asset/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <!--<script src="../asset/js/jqPaginator.js"></script>-->
+   	<script src="../asset/js/jquery-ui.custom.min.js"></script>
+	<script src="../asset/js/datePicker.js"></script>
+	
+	
+	<script src="../asset/js/getData.js"></script>
+	
+    <script src="../asset/js/table.js"></script> 
+   
+	<script  src="../asset/js/constant.js"></script>		<!-- 使用constant.js -->
+	
+	<script src="../bootstrap/js/tab.js"></script>                                      <!--  tab调用 -->
+	
+	<script src="../asset/js/jqPaginator.js"></script>
+
+
+
+    <script type="text/javascript" src="../asset/js/ownerManage/meterHistoryInfo.js"></script>
+
+</body>
+</html>

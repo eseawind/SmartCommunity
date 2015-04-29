@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>小区信息</title>
+
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />  -->
+	
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!--加了下面这个才能把table显示的完整-->
+	<link href="../asset/css/jquery.dataTables.min.css" rel="stylesheet">
+	
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+
+
+</head>
+<body style="padding-top: 10px;">
+    <div class="container-fluid">
+        <div class="panel panel-primary">
+        <div class="panel-heading text-center"><h4><b>楼宇信息</b></h4></div>
+        <div class="panel-body">
+          <form class="form-horizontal" id="uploadForm" >
+          <div class="row">
+            <div class="col-md-2 col-md-offset-1">
+              <label class="">楼宇编号</label>
+              <input type="text" name="building.number" class="form-control" id="buildnum"
+			  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+            </div>
+            <div class="col-md-2 ">
+              <label class="">楼宇类型</label>
+              <input type="text" name="building.type" class="form-control"  id="buildtype">
+            </div>
+            <div class="col-md-2">
+              <label class="">楼宇名称</label>
+              <input type="text" name="building.name" class="form-control"  id="buildname" >
+            </div>
+            <div class="col-md-2">
+              <label class="">楼宇地址</label>
+              <input type="text" name="building.address" class="form-control" id="location">
+            </div>
+          </div> 
+
+ <br>
+        <div class="row">
+
+            <div class="col-md-2 col-md-offset-1">
+              <label class="">管理处</label>
+              <input type="text" name="building.manager" class="form-control" id="manage">
+            </div>
+          
+            <div class="col-md-2 ">
+              <label class="">楼宇结构</label>
+              <input type="text" name="building.struct" class="form-control"  id="structure">
+            </div>
+
+				<div class="col-md-2 ">          
+				  <label class="">楼宇朝向</label>
+				  <select id="direction" name="building.orientation" class="form-control">
+					<option value="pleaseSelect">---请选择---</option>
+				  </select>
+				</div>
+
+				<div class="col-md-2 ">
+				  <label class="">竣工时间</label>
+				  <input type="text" class="form-control" name="building.complatetime" readonly id="complatetime">   
+				</div> 
+			</div> 
+
+			 <br>
+
+            <div class="row">
+              <div class="col-md-11 col-md-offset-1">
+                <label class="">备注</label>
+                <textarea name="building.remarks" class="form-control" id="demo" rows="3"  >
+                </textarea>
+              </div> 
+            </div>
+
+            <br>
+           
+              <div class="form-group text-center">
+                <div class="row"> 
+                  <div class="col-md-3 col-md-offset-3">
+                    <input type="button" id="button_submmit" value="提交" class="btn btn-primary btn-lg">
+                  </div>
+                  <div class="col-md-3">
+                    <input type="reset" id="button_resert" value="重置" class="btn btn-danger btn-lg">
+                  </div>
+                </div>
+              </div>
+            </form>
+           
+        </div> 
+      </div>     
+    </div>
+
+
+
+ <script src="../asset/js/jquery-1.11.1.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src ="../asset/js/jquery-ui.custom.min.js"></script>
+	<script src="../asset/js/constant.js"></script>
+	<script src="../asset/js/table.js"></script> 
+	<script src="../asset/js/getData.js"></script>
+	<script src="../asset/js/jqPaginator.js"></script>
+
+	
+	<script src="../asset/js/datePicker.js"></script>
+	
+	
+	<script src="../asset/js/constant.js"></script>		<!-- 使用constant.js -->
+
+	<script src="../asset/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    
+	 <script src="../asset/js/house/addBuild.js" ></script> 
+ 
+
+
+</body>
+
+</html>

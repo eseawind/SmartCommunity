@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="readme.css">
+<title>readme</title>
+</head>
+<body>
+	<h1>智慧社区管理系统使用说明</h1>
+	<h2>系统的配置</h2>
+	/SmartCommunity/src/jdbc.property -- 配置数据库地址，用户名，密码
+	<h2>智慧社区管理系统接口使用说明</h2>
+	<ul>
+		<li>公告管理</li>
+		<ol>
+			<li>发布公告</li> 地址 ： host:port//MyBatis/notice/publishNotice.action
+			<br> 参数 ： title , content,author
+			<br> 返回结果 ：
+			<br> success : 是否成功
+			<br> type : 失败原因
+			<br>
+
+			<li>查询公告</li> 地址 ： host:port//MyBatis/notice/listNoticeByPage.action
+			<br> 参数 ： pageSize,pageNo
+			<br> 返回结果：
+			<br> success : 是否成功
+			<br> result : 返回结果数组
+			<br> {
+			<br> author : 发布者
+			<br> content : 公告内容
+			<br> date ： 发布日期
+			<br> title : 公告标题
+			<br> id ： 公告标识
+			<br> }
+			<br> totalpage : 总页数
+			<br>
+		</ol>
+		<li>报修管理</li>
+
+			<ol>
+				<li>列出设备名称</li>
+				地址：http://localhost:8080/MyBatis/repair/listDevices.action 参数：无 返回结果
+				{ id devicename }
+				<li>列出设备可能出现的故障</li>
+				地址：http://localhost:8080/MyBatis/repair/listDeviceFault.action 参数：id
+				返回结果 { id deviceid devicestate }
+			</ol>
+	</ul>
+</body>
+</html>

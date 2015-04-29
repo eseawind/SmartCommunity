@@ -1,0 +1,99 @@
+.table_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:14px;
+    color:black;
+}
+.select_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:14px;
+    color:black;
+}
+.label_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:14px;
+    color:black;
+}
+.input_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:14px;
+    color:black;
+}
+.textarea_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:14px;
+    color:black;
+}
+
+.button_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:17px;
+    color:white;
+}
+
+.h1_font{ 
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:17px;
+    color:red;
+}
+.h2_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:17px;
+    color:black;
+}
+.h3_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:14px;
+    color:black;
+}
+.h4_font{
+     font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:14px;
+    color:black;
+}
+.h5_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:14px;
+    color:black;
+}
+.h6_font{
+    font-family: Microsoft YaHei,YouYuan, FangSong , Tahoma, Helvetica, Arial, "\5b8b\4f53" , sans-serif;
+    font-style:normal; 
+    font-weight:normal; 
+    text-decoration:none; 
+    font-size:14px;
+    color:black;
+}
+

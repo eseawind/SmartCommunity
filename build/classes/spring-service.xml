@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- spring 配置 service 的文件 -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd ">
+
+	<bean id="testService" class="com.smartcommunity.service.impl.TestServiceImpl"
+		scope="prototype">
+		<property name="testMapper" ref="testMapper"></property>
+	</bean>
+
+	<bean id="noticeService" class="com.smartcommunity.service.impl.NoticeServiceImpl"
+		scope="prototype">
+		<property name="noticeMapper" ref="noticeMapper"></property>
+		<property name="roomownerMapper" ref="roomownerMapper"></property>
+		<property name="userNoticeMapper" ref="userNoticeMapper"></property>
+	</bean>
+	<bean id="repairService" class="com.smartcommunity.service.impl.RepairServiceImpl"
+		scope="prototype">
+		<property name="repairMapper" ref="repairMapper"></property>
+		<property name="repairimagesMapper" ref="repairimagesMapper"></property>
+	</bean>
+	<bean id="deviceService" class="com.smartcommunity.service.impl.DeviceServiceImpl"
+		scope="prototype">
+		<property name="deviceMapper" ref="deviceMapper"></property>
+		<property name="devicefaultMapper" ref="devicefaultMapper"></property>
+	</bean>
+	<bean id="meterService" class="com.smartcommunity.service.impl.MeterServiceImpl"
+		scope="prototype">
+		<property name="meterMapper" ref="meterMapper"></property>
+		<property name="accountRecordMapper" ref="accountRecordMapper"></property>
+		<property name="accountMapper" ref="accountMapper"></property>
+	</bean>
+	<bean id="buildingService" class="com.smartcommunity.service.impl.BuildingServiceImpl"
+		scope="prototype">
+		<property name="roomMapper" ref="roomMapper"></property>
+		<property name="buildingMapper" ref="buildingMapper"></property>
+	</bean>
+	<bean id="complaintsService" class="com.smartcommunity.service.impl.ComplaintsServiceImpl"
+		scope="prototype">
+		<property name="complaintsMapper" ref="complaintsMapper"></property>
+		<property name="complaintsimagesMapper" ref="complaintsimagesMapper"></property>
+	</bean>
+
+	<bean id="userManageService" class="com.smartcommunity.service.impl.UserManageServiceImpl"
+		scope="prototype">
+		<property name="roomownerMapper" ref="roomownerMapper"></property>
+		<property name="userpassMapper" ref="userpassMapper"></property>
+		<property name="userrolejoinMapper" ref="userrolejoinMapper"></property>
+		<property name="accountMapper" ref="accountMapper"></property>
+	</bean>
+
+	<bean id="decorateService" class="com.smartcommunity.service.impl.DecorateServiceImpl"
+		scope="prototype">
+		<property name="decorateMapper" ref="decorateMapper"></property>
+		<property name="decoratefeeMapper" ref="decoratefeeMapper"></property>
+	</bean>
+	<!-- tongyong -->
+		<bean id="meterBaseService" class="com.smartcommunity.service.impl.MeterBaseServiceImpl"
+		scope="prototype">
+		<property name="tongYongMapper" ref="tongYongMapper"></property>
+	</bean>
+</beans>  

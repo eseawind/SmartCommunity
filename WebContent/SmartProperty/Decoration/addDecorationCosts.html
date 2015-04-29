@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name ="viewport"  content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+        <style>
+            .panel-heading {
+                font-size: 21px;
+            }
+
+            .row {
+                margin-top: 16px;
+            }
+        </style>
+
+</head>
+<body style="padding-top: 10px;">
+    <div class="container-fluid">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center"><b>添加新装修户费用</b></div>
+            <div class="panel-body">
+                <form class="form-horizontal" id="uploadForm" >
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-1">
+                            <label >楼栋号</label>
+                            <select id="search_build" name="decorate.roomnumber" class="form-control">
+                                <option value="0">---请选择---</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 ">
+                            <label >单元号</label>
+                            <select id="search_unit" name="decorate.roomnumber" class="form-control">
+                                <option value="0">---请选择---</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 ">
+                            <label >房间号</label>
+                            <select id="search_room" name="decorate.roomnumber" class="form-control">
+                                <option value="0">---请选择---</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label class="">业主姓名</label>
+                            <input type="text" id="decoratefee_ownername" name="decoratefee.ownername" class="form-control">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="">日期</label>
+                            <input type="text" class="form-control" name="decoratefee.date" value="2015-01-01" id="decorDate">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-1">
+                            <label class="">装修押金</label>
+                            <input type="number" id="decoratefee_deposit" class="form-control" name="decoratefee.deposit" min="0">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="">垃圾清运费</label>
+                            <input type="number" class="form-control" name="decoratefee.rabishfee" min="0">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="">电费</label>
+                            <input type="number" class="form-control" name="decoratefee.elecfee" min="0">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="">水费</label>
+                            <input type="number" class="form-control" name="decoratefee.waterfee" min="0">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="">出入证费</label>
+                            <input type="number" class="form-control" name="decoratefee.passfee" min="0">
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-10 col-md-offset-1">
+                            <label class="">备注</label>
+                            <textarea class="form-control" id="decoratefee.remarks" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-5">
+                            <input type="button" id="button_submmit" value="确定" class="btn btn-primary btn-lg">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="reset" value="重置" class="btn btn-danger btn-lg">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../asset/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script  src="../asset/js/jquery-ui.custom.min.js"type="text/javascript"></script>
+    <script src="../bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+   
+
+    <script  src="../asset/js/datePicker.js"type="text/javascript"></script>
+    <script src="../asset/js/constant.js" type="text/javascript"></script> 
+    <script src="../asset/js/getData.js" type="text/javascript"></script>
+    <script src="../asset/js/Decoration/addDecorationCosts.js" type="text/javascript"></script>
+
+    
+
+
+</body>
+
+</html>

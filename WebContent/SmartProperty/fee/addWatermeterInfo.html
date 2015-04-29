@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+	<style>
+      .panel-body{
+        font-size:18px;
+      }
+
+      .input-textsize{
+        font-size:18px;
+      }
+
+  </style>
+</head>
+
+<body style="padding-top: 10px;">
+
+	<div class="container-fluid">
+		<div class="panel panel-info">
+			<div class="panel-heading text-center"><h4><b>水电表信息录入</b></h4></div>
+		
+			<div class="panel-body">
+		    	 <form id="uploadForm" action="" method="post" role="form">
+              
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-2 col-md-offset-1">
+								<label class="">楼栋号</label>
+									<select id="meter_build"  name="buildNo" class="form-control">
+										<option value="">---请选择---</option>
+									</select>
+							</div>
+							<div class="col-md-2 col-md-offset-1">
+								<label class="">单元号</label>
+									<select id="meter_unit" name="unitNo"  class="form-control">
+										<option value="">---请选择---</option>
+									</select>
+							</div>
+							<div class="col-md-2 col-md-offset-1">
+								<label class="">房间号 </label>
+									<select id="meter_room" name="roomNo" class="form-control">
+										<option value="">---请选择---</option>
+									</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2 col-md-offset-1" >
+								<label class="">水表</label>
+									<input type="text" class="form-control" id="meter_water" name="waterconsum" >
+							</div>
+							<div class="col-md-2 col-md-offset-1" >
+								<label class="">电表</label>
+									<input type="text" class="form-control" id="meter_electric" name="elecconsum" >
+							</div>
+							<div id="otherDeviceDiv" class="col-md-2 col-md-offset-1">
+								<label class="">抄表人</label>
+									<input type="text" id="meter_author" name="readman" class="form-control input-textsize"  placeholder="字数不能超过4个" maxlength="4" required autofocus>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2 col-md-offset-1">
+								<label >抄表日期</label>
+									<input type="text"  class="form-control" readonly id="meter_date" name="readtime">
+							</div>
+						</div>
+					</div>
+<br>
+					<div class="form-group text-center">
+						<div class="row"> 
+							<div class="col-md-3 col-md-offset-3">
+								<input type="button" id="meter_button" value="确定" class="btn btn-primary btn-lg">
+							 </div>
+							 <div class="col-md-3">
+								<input type="reset" value="重置" class="btn btn-danger btn-lg">
+							</div>
+						</div>
+					 </div>
+			
+				</form>
+			</div>
+        </div> 
+  </div>     
+</div>
+
+
+
+	<script src="../asset/js/jquery-1.11.1.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src="../asset/js/jquery.cookie.js"></script>
+	
+
+
+	 <script src="../asset/js/getData.js"></script>
+
+	<script src="../asset/js/table.js"></script> 
+	<script src="../asset/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+	<!--显示时间必须加下面的两个src-->
+	<script src="../asset/js/jquery-ui.custom.min.js"></script>
+	<script src="../asset/js/datePicker.js"></script>
+
+
+	<script  src="../asset/js/constant.js"></script>		<!-- 使用constant.js -->
+    <script src="../asset/js/fee/addWatermeterInfo.js" type="text/javascript" ></script>
+  
+
+</body>
+
+</html>

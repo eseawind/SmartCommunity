@@ -1,0 +1,439 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>魔速家</title>
+    <link href="css/jquery.mobile.structure-1.3.2.css" rel="stylesheet" type="text/css"/>
+	<link href="css/jquery.mobile-1.3.2.css" rel="stylesheet" type="text/css"/>
+    <link href="css/layout.css" rel="stylesheet" type="text/css">
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/jquery.mobile-1.3.2.min.js" type="text/javascript"></script>
+    <script src="js/count.js" type="text/javascript"></script>
+    <script src="js/iscroll.js" type="text/javascript"></script>
+    <script type="text/javascript">
+		$(document).ready(function(){
+				$.ajax({
+					 type: "post",
+					 async: false,
+					 url: "http://localhost:8080/wechat_app/pages/storeClassification.do?action=qryM",
+					 dataType: "json",
+					 success: function(json){	
+						 alert("sucess");
+						 var content='';
+						  $.each( json, function(i, n){					 
+							content = content + "<li class='gallery-item'>";
+							content = content + "<a  href='#shop' onclick='sessionStorage.id="+n.id+"'>";
+							//content = content + "<img src=\""+n.picLink+"\" />";
+							content = content + "<img src='../../"+n.picLink+"' />";
+							content = content + "<h3>";
+							content = content + n.clName;
+							content = content + "</h3>";			
+							content = content + "</a>";
+							content = content + "</li>";
+						});				
+						$("#grid").append(content);		
+					 },
+					 error: function(){
+						 alert('fail');
+					 }
+				 });
+				 		
+				$(document).on('pagebeforeshow','#shop', function(){
+					alert("您点击的选项id是：" + sessionStorage.id);
+					        $("#storeInfo").empty();
+							$("#storeInfo").listview('refresh');	
+							 var content="";
+							    content = content + "<li>";
+								content = content + "<a href='#commInfo' onclick='sessionStorage.id="+sessionStorage.id+"'>";
+								
+								content = content + "<h2>";
+								content = content + "晚";
+								content = content + "</h2>";
+								content = content + "<p>";
+								content = content + "是对方噶";
+								content = content + "</p>";		
+								content = content + "<p>电话:";
+								content = content + "2146546";
+								content = content + "</p>";				
+								content = content + "</a>";
+								content = content + "</li>";
+							
+							$("#storeInfo").append(content).listview('refresh');	
+				    
+				});
+				$(document).on('pagebeforeshow','#commInfo', function(){
+					alert("您点击的商店的id是：" + sessionStorage.id);
+				    $.ajax({
+					 type: "post",
+					 async: false,
+					 url: "http://localhost:8080/wechat_app/pages/storeCommInfo.do?action=qryM&cfId="+sessionStorage.id,
+					 dataType: "json",
+					 success: function(json){	
+						 alert("sucess");
+						 var content="";
+						  $.each( json, function(i, n){					 
+							content = content + "<li>";
+							content = content + "<a href='#detail' onclick='sessionStorage.id="+n.commId+"'>";
+							content = content + "<img src=\""+n.pictureLink+"\" />";
+							content = content + "<h2>";
+							content = content + n.commName;
+							content = content + "</h2>";
+							content = content + "<p>月售";
+							content = content + n.price;
+							content = content + "份</p>";				
+							content = content + "</a>";
+							content = content + "<div  class='ui-li-aside'>";
+							content = content + "<span style='padding:35px'>￥<b>"
+							content = content + n.price;
+							content = content + "</b></span><br/>"
+                            content = content + "<a class='min' data-role='button' data-icon='minus' data-iconpos='notext' data-theme='c' data-inline='true'></a>"
+                            content = content + "<em>0</em>"
+                            content = content + "<a class='add' data-role='button' data-icon='plus' data-iconpos='notext' data-theme='c' data-inline='true'></a>"
+                            content = content + "</div>";
+							content = content + "</li>";
+						});				
+						$("#goods").append(content).listview('refresh');	
+					},
+					error: function(){
+						alert('fail');
+					}
+					});
+				});
+ 		})
+
+	</script>
+	
+    <script type="text/javascript">
+			var myScroll,
+			pullDownEl, pullDownOffset,
+			generatedCount = 0;
+		
+		/**
+		 * 下拉刷新 （自定义实现此方法）
+		 * myScroll.refresh();		// 数据加载完成后，调用界面更新方法
+		 */
+		
+		function pullDownAction () {
+			
+				
+				myScroll.refresh();		//数据加载完成后，调用界面更新方法   Remember to 
+		}
+		
+		function loaded() {
+			//清除所占的内存空间
+			if(myScroll!=null){
+				myScroll.destroy();
+			}
+		
+			pullDownEl = document.getElementById('pullDown');
+			pullDownOffset = pullDownEl.offsetHeight;
+			
+			myScroll = new iScroll('wrapper', {
+				useTransition: true,    //默认为true
+				//useTransition: false, 
+				topOffset: pullDownOffset,
+				onRefresh: function () {
+					if (pullDownEl.className.match('loading')) {
+						pullDownEl.className = '';
+						pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+					}
+				},
+				onScrollMove: function () {
+					if (this.y > 5 && !pullDownEl.className.match('flip')) {
+						pullDownEl.className = 'flip';
+						pullDownEl.querySelector('.pullDownLabel').innerHTML = '松手开始更新...';
+						this.minScrollY = 0;
+					} else if (this.y < 5 && pullDownEl.className.match('flip')) {
+						pullDownEl.className = '';
+						pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+						this.minScrollY = -pullDownOffset;
+					}
+				},
+				onScrollEnd: function () {
+					if (pullDownEl.className.match('flip')) {
+						pullDownEl.className = 'loading';
+						pullDownEl.querySelector('.pullDownLabel').innerHTML = '加载中...';				
+						pullDownAction();	// Execute custom function (ajax call?)
+					}
+				}
+			});
+			
+			setTimeout(function () { document.getElementById('wrapper').style.left = '0'; }, 800);
+		}
+		
+		//初始化绑定iScroll控件 
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+		
+		//document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+		document.addEventListener('DOMContentLoaded', loaded, false); 
+    </script>
+    
+</head>  
+<body>    
+<div data-role="page" data-theme="c" id="home">  
+        <div data-role="header" data-position="fixed" data-theme="b" >  
+            <h1>魔速家</h1>   
+        </div>  
+        <div id="wrapper">
+	       <div id="scroller"  data-theme="c">
+                <div id="pullDown">
+                <span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
+                </div>
+           	 	<div data-role="content" data-theme="c">  
+                    <div class="gallery">  
+                        <ul class="gallery-entries clearfix">   
+                           
+                                <li class="gallery-item">  
+                                    <a href="#shop"  onclick="sessionStorage.id=000"><img src="images/百货速达.jpg"> 
+                                    <h3>百货速达</h3>  
+                                    </a>  
+                                </li> 
+                                 <li class="gallery-item">  
+                                    <a href="#shop"  onclick="sessionStorage.id=000"><img src="images/百货速达.jpg"> 
+                                    <h3>百货速达</h3>  
+                                    </a>  
+                                </li>  
+                                 <li class="gallery-item">  
+                                    <a href="#shop"  onclick="sessionStorage.id=000"><img src="images/百货速达.jpg"> 
+                                    <h3>百货速达</h3>  
+                                    </a>  
+                                </li>  
+                                 <li class="gallery-item">  
+                                    <a href="#shop"  onclick="sessionStorage.id=000"><img src="images/百货速达.jpg"> 
+                                    <h3>百货速达</h3>  
+                                    </a>  
+                                </li>   
+                           
+                       </ul> 
+                    </div> 
+                </div> 
+	    	</div>
+        </div>
+        
+      	<div data-role="footer" data-position="fixed" data-theme="c"> 
+    		<div data-role="navbar"> 
+    			<ul>
+    				<li><a href="#home" data-icon="home"  class="ui-btn-active ui-state-persist">首页</a></li>
+    				<li><a href="#order" data-icon="grid">订单</a></li>
+    				<li><a href="#cart" data-icon="gear">购物车</a></li>
+                    <li><a href="#my" data-icon="star">我的</a></li>
+    			</ul>
+    		</div><!-- /navbar --> 
+    	    </div><!-- /footer --> 
+</div> 
+
+<div data-role="page" data-theme="c" id="order"> 
+		<div data-role="header" data-position="fixed" data-theme="b" >  
+            <h1>订单</h1>   
+        </div>  
+		<div data-role="content">
+			订单
+		</div>
+        <div data-role="footer" data-position="fixed" data-theme="c"> 
+    		<div data-role="navbar"> 
+    			<ul>
+    				<li><a href="#home" data-icon="home">首页</a></li>
+    				<li><a href="#order" data-icon="grid"  class="ui-btn-active ui-state-persist">订单</a></li>
+    				<li><a href="#cart" data-icon="gear">购物车</a></li>
+                    <li><a href="#my" data-icon="star">我的</a></li>
+    			</ul>
+    		</div><!-- /navbar --> 
+    	</div><!-- /footer --> 
+</div>   
+
+<div data-role="page" data-theme="c" id="cart"> 
+		<div data-role="header" data-position="fixed" data-theme="b" >  
+            <h1>购物车</h1>   
+        </div>  
+        <div data-role="footer" data-position="fixed" data-theme="c"> 
+    		<div data-role="navbar"> 
+    			<ul>
+    				<li><a href="#home" data-icon="home">首页</a></li>
+    				<li><a href="#order" data-icon="grid">订单</a></li>
+    				<li><a href="#cart" data-icon="gear"  class="ui-btn-active ui-state-persist">购物车</a></li>
+                    <li><a href="#my" data-icon="star">我的</a></li>
+    			</ul>
+    		</div><!-- /navbar --> 
+    	</div><!-- /footer --> 
+</div> 
+  
+<div data-role="page" data-theme="c" id="my"> 
+		<div data-role="header" data-position="fixed" data-theme="b" >  
+            <h1>我的</h1>   
+        </div>  
+        <div data-role="footer" data-position="fixed" data-theme="c"> 
+    		<div data-role="navbar"> 
+    			<ul>
+    				<li><a href="#home" data-icon="home">首页</a></li>
+    				<li><a href="#order" data-icon="grid">订单</a></li>
+    				<li><a href="#cart" data-icon="gear">购物车</a></li>
+                    <li><a href="#my" data-icon="star"  class="ui-btn-active ui-state-persist">我的</a></li>
+    			</ul>
+    		</div><!-- /navbar --> 
+    	</div><!-- /footer --> 
+</div> 
+
+<div data-role="page" data-theme="c" id="shop">   
+        <div data-role="header" data-position="fixed" data-theme="b">  
+            <a href="#home" data-role="button" data-icon="arrow-l" data-iconpos="notext"></a>
+            <h1>商店</h1>   
+        </div>  
+        <div id="wrapper">
+	        <div id="scroller"  data-theme="c">
+                <div id="pullDown">
+                <span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
+                </div>
+        	</div>
+        </div>	
+        <div data-role="content">  
+		   <fieldset data-role="controlgroup" data-type="horizontal">
+			 <select name="xiala" id="xiala" data-native-menu="false">
+			 <option>百货速达</option>
+			 </select>
+		   </fieldset>
+			 <br/>
+			<ul data-role="listview" id="storeInfo">
+			  <li data-icon="false">
+				<a href="#commInfo"><img src="images/百货速达.jpg">
+					 <h2>万达</h2>
+                     <p>无锡市滨湖区蠡湖大道1000号。</p>
+                     <p>电话：0510-83564715</p>
+				</a>
+			  </li>
+			</ul>
+        </div>  	
+		<div data-role="footer" data-position="fixed" > 
+	
+		</div><!-- /footer --> 
+</div> 
+
+<div data-role="page" data-theme="c" id="commInfo">   
+        <div data-role="header" data-position="fixed" data-theme="b">  
+             <a href="#shop" data-role="button" data-icon="arrow-l" data-iconpos="notext"></a>
+             <h1>
+                <div data-role="navbar"> 
+                	<ul>
+                        <li><a href="#" data-role="button" class="ui-btn-active ui-state-persist">菜单</a></li>
+                        <li><a href="#storeDetail" data-role="button" >门店详情</a></li>
+                    </ul>
+                </div>
+             </h1>
+        </div> 
+        <div id="wrapper">
+	        <div id="scroller"  data-theme="c">
+                <div id="pullDown">
+                <span class="pullDownIcon"></span><span class="pullDownLabel">Pull down to refresh...</span>
+                </div>
+        	</div>
+        </div>	 	
+        <div data-role="content" data-theme="c">
+        	  <ul data-role="listview" id="goods" data-icon="false">
+                    <li>
+                        <a href="#detail" data-rel="dialog"><img src="images/美食速达.jpg">
+                             <h2>苹果</h2>
+                             <p>月售5份</p>
+                        </a>
+                             <div class="ui-li-aside">
+                             	<span style="padding:35px">￥<b>5</b></span><br/>
+                                <a href="#" class="min" data-role="button" data-icon="minus" data-iconpos="notext" data-theme="c" data-inline="true"></a>
+                                <em>0</em>
+                                <a href="#" class="add" data-role="button" data-icon="plus" data-iconpos="notext" data-theme="c" data-inline="true"></a>
+                             </div>
+                        
+                    </li>
+                    <li>
+                        <a href="#"><img src="images/打印复印.jpg">
+                            <h2>香蕉</h2>
+                            <p>月售15份</p>
+                        </a>
+                        <div class="ui-li-aside">
+                             	<span style="padding:35px">￥<b>3</b></span><br/>
+                                <a href="#" class="min" data-role="button" data-icon="minus" data-iconpos="notext" data-theme="c" data-inline="true"></a>
+                                <em>0</em>
+                                <a href="#" class="add" data-role="button" data-icon="plus" data-iconpos="notext" data-theme="c" data-inline="true"></a>
+                         </div>
+                    </li>	 
+                   
+            </ul>
+       </div>		
+	   <div  data-role="footer" data-position="fixed" data-theme="c"> 
+	  		<a href="#" data-role="button" data-icon="grid" data-iconpos="notext"></a>
+            ￥<span id="count">0</span>
+            <a id="jiesuan" datarole="button" class="ui-btn-right" data-inline="true">还差<b>0</b>元起送</a>
+	   </div><!-- /footer --> 
+</div> 
+
+<div data-role="page" data-theme="c" id="detail"> 
+		<div data-role="header" data-position="fixed" data-theme="b" >  
+            <h1>苹果</h1>   
+        </div>  
+        <div data-role="content"> 
+    		<img src="images/美食速达.jpg">
+            <p class="ui-li-aside"><a href="#" data-role="button" data-inline="true">来一份</a></p>
+            <p>价格:￥5</p>
+            <p><b>月售0份</b></p>
+            <p>介绍：香脆可口</p>     
+    	</div>
+</div> 
+
+<div data-role="page" data-theme="c" id="storeDetail">   
+        <div data-role="header" data-position="fixed" data-theme="b" >  
+             <a href="#shop" data-role="button" data-icon="arrow-l" data-iconpos="notext"></a>
+             <h1>
+                <div data-role="navbar"> 
+                	<ul>
+                        <li><a href="#commInfo" data-role="button">菜单</a></li>
+                        <li><a href="#" data-role="button" class="ui-btn-active ui-state-persist">门店详情</a></li>
+                    </ul>
+                </div>
+             </h1>
+        </div>  	
+        <div data-role="content" data-theme="c"> 
+            <div class="ui-grid-b">
+                 <div class="ui-block-a">
+                 	<p>0</p>
+                    <span>送达/分钟</span>
+                 </div>
+                 <div class="ui-block-b">
+                    <p>0</p>
+                    <span>起送价/元</span>
+                 </div>
+                 <div class="ui-block-c">
+                    <p>0</p>
+                    <span>配送费/元</span>
+                 </div>
+            </div>
+            <br/>
+            <br/>
+			<ul data-role="listview"  data-icon="false">
+			  
+               <li>
+                    <a href="#" data-role="button" data-icon="star" data-corners="false">电话：0510-83562146
+                    </a>
+			   </li>
+               <li>
+                    <a href="#" data-role="button" data-icon="search" data-corners="false">江苏省无锡市滨湖区惠河路186号
+                    </a>
+			   </li>
+               <li>
+					<p>营业时间：00:00-24:00</p>
+			   </li>
+               <li>
+					<p>服务半径：0公里</p>
+			   </li>
+               <li>
+					<p>配送区域：3</p>
+			   </li>
+			 
+	    	</ul>
+        </div>  
+		
+		<div data-role="footer" data-position="fixed" > 
+	
+		</div><!-- /footer --> 
+</div> 
+  
+</body>  
+</html>  
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- spring mybatis 整合 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+     http://www.springframework.org/schema/context  
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/mvc  
+     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+	<!-- 指定属性配制文件位置 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<!-- 配制 MyBatis 数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.driver}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		
+        <!-- 连接池最大连接ovt -->  
+        <property name="maxPoolSize" value="${maxPoolSize}"></property>  
+        <!-- 连接池最小连接数 -->  
+        <property name="minPoolSize" value="${minPoolSize}"></property>  
+        <!-- 初始化连接池大小 -->  
+        <property name="initialPoolSize" value="${initialPoolSize}"></property>  
+        <!-- 连接最大空闲时间 -->  
+        <property name="maxIdleTime" value="${maxIdleTime}"></property>  
+
+	</bean>
+	
+	<!-- 分页拦截器 -->
+	<bean id="pageInterceptor" class="edu.hust.smartcommunity.paginator.OffsetLimitInterceptor">
+	    <property name="dialectClass" value="edu.hust.smartcommunity.paginator.dialect.MySQLDialect"></property>
+	</bean>  
+	
+	<!-- 配置会话工厂 MyBatis-spring-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />        
+		<property name="plugins">  
+            <ref bean="pageInterceptor"/> 
+        </property>
+		<!-- 指定 MyBatis XML 映射器文件的位置 -->
+		<property name="mapperLocations" value="classpath:com/smartcommunity/mapper/*.xml" />
+	</bean>
+
+	<!-- 开启 spring 事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	 
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.smartcommunity.mapper" />		
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
+	</bean>
+</beans>  

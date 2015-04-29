@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type='text/xsl href='students.xsl'?>
+
+<update>
+	<version value="1.0.1"/>
+	<feature value="1.对话框全新改版，清爽自在"/>
+	<feature value="2.修复公告无法查看全部bug"/>
+	<feature value="3.优化下拉刷新操作，更加流畅自如"/>
+	<feature value="4.调整报修和投诉界面显示，更加合理"/>
+	<feature value="5.更多优化期待您下载体验..."/>
+</update>

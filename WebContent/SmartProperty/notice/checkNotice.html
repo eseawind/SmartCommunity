@@ -1,0 +1,161 @@
+﻿ <!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>公告信息查询</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />  -->
+	
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!--加了下面这个才能把table显示的完整-->
+	<link href="../asset/css/jquery.dataTables.min.css" rel="stylesheet">
+	
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+
+	<link href="../asset/css/styles.css" rel="stylesheet">
+
+
+
+	<!-- 可以把两个panel分开 -->
+	 <!-- <style>
+      	.panel {
+      		margin-top: -24px;
+      	}
+    </style> -->
+</head>
+<body style="padding-top: 10px;">
+	<div class="container-fluid">
+	
+		<div class="panel panel-info">
+					<!-- <div class="panel-heading"> -->
+					   
+					<!-- </div> -->
+			<div class="panel-heading text-center"><h4><b>公告信息查询</b></h3></div>
+				<div class="panel-body">
+					<div class="container-fluid">
+						<form id="uploadForm" action="" method="post" role="form">
+							<div class="form-group">
+								<div class="row">
+									<!-- <div class="col-sm-2 ">										
+										<label >楼栋号</label>
+											<select style="width:150px" id="notice_build" name="build" class="form-control " >
+								  				<option  value="0">---请选择---</option>
+											</select>
+			
+									
+									</div>  -->
+									<div class="col-sm-2 ">
+										<label >公告关键字</label>
+										<input type="text" id="notice_keywords" name="keywords"   class="form-control">
+									</div>
+														<!-- placeholder="字数不能超过4" maxlength="4" required autofocus -->
+
+									<div class="col-md-2 ">
+										<label >发布日期</label>
+										<input type="text"  readonly id="notice_date" class="form-control " >
+									</div>
+<br>
+									<div class="col-md-2 col-md-offset-1">																 <!--btn-sm -->
+										<input type="button" id="notice_history_search" value="查询" class="btn btn-primary ">
+										<input type="reset" value="重置" class="btn btn-danger col-md-offset-1">
+									</div>
+
+								</div>
+							</div>
+						</form>
+					</div>
+				</div> 
+			</div> 
+
+		</div> 
+	</div> 
+
+
+
+	<div class="container-fluid">
+		<div class="panel panel-info">
+
+			<div class="panel-heading">
+				<h2 class="panel-title"><b>结果列表</b></h3>
+			</div>
+
+			<div class="form-group">
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table id="notice_table" class="table table-bordered table-striped table-hover tablesorter">
+							<thead>
+								<tr class="success">
+									<th width="15%">公告名称</th>
+									<th width="30%">内容</th>
+									<th width="15%">日期</th>
+									<th width="10%">发布人</th>
+									<th width="10%">接收人</th>
+								</tr>
+							 </thead>
+
+							<tbody id="notice_tableBody">
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										
+									</tr>
+								  </tbody> 
+						</table>
+								
+								<span id="sp" class="pageshow"></span> 
+								<ul class="pagination pull-right pagehandle" id="pagination"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			<!-- </div>
+	    </div>
+
+		</div>
+	    </div> -->
+ 
+	
+	<!-- <script src="../bootstrap/js/tab.js"></script>         -->                              <!--  tab调用 -->
+	
+	
+
+
+	<script src="../asset/js/jquery-1.11.1.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src ="../asset/js/jquery-ui.custom.min.js"></script>
+	<script src="../asset/js/constant.js"></script>
+	<script src="../asset/js/table.js"></script> 
+	<script src="../asset/js/getData.js"></script>
+	<script src="../asset/js/jqPaginator.js"></script>
+
+	
+	<script src="../asset/js/datePicker.js"></script>
+	
+	
+	<script src="../asset/js/constant.js"></script>		<!-- 使用constant.js -->
+
+	<script src="../asset/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    
+	<script src="../asset/js/notices/checkNotice.js" ></script>
+
+</body>
+</html>
+
+
+
+
+		
+		
+
+
+
+
+
+

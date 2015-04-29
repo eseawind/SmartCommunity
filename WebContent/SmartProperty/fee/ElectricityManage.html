@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+
+	<!-- <link href="../asset/css/styles.css" rel="stylesheet">  -->
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../asset/css/jquery.dataTables.min.css" rel="stylesheet">
+
+	
+	 <style>
+		#sign_up {
+        -moz-border-radius: 6px;
+        background: #eef2f7;
+        -webkit-border-radius: 6px;
+        border: 1px solid #536376;
+        -webkit-box-shadow: rgba(0,0,0,.6) 0px 2px 12px;
+        -moz-box-shadow:  rgba(0,0,0,.6) 0px 2px 12px;;
+        padding: 14px 22px;
+        width: 400px;
+        position: relative;
+        display: none;
+    } 
+     #sign_up #sign_up_form {
+        margin-top: 13px;
+    } 
+     #sign_up label {
+        display: block;
+        margin-bottom: 10px; 
+        color: #536376;
+        font-size: .9em;
+    }  
+  
+    #sign_up label input {
+        display: block;
+        /* width: 393px; */
+		width: 350px;
+        height: 31px;
+        background-position: -201px 0;
+        padding: 2px 8px;
+        font-size: 1.2em;
+        line-height: 31px;
+    }
+	#sign_up_form {
+        position: relative;
+        /* background: url(../Property/close.png) repeat-x bottom left;  */
+        padding-bottom: 54px;
+        margin-bottom: 12px;
+    }
+    #actions {
+        float: left;
+        position: absolute;
+        right: 0;
+        height: 31px;
+        bottom: 20px;
+    }
+    button.form_button {
+        float: left;
+        width: 93px; height: 31px;
+        margin-right: 15px;
+    }
+      	.panel {
+      		margin-top: -24px;
+      	}
+		/* .panel-body{
+		        font-size:18px;
+		      }
+		      .col-md-1{
+		        font-size:18px;
+		      }
+		      .input-textsize{
+		        font-size:14px;
+		      } */
+	 
+    </style>
+			
+</head>
+<body style="padding-top: 54px;">
+	
+	<div class="container-fluid">
+
+		<ul class="nav nav-pills nav-justified navbar-fixed-top" role="tablist">
+		  	<li role="presentation" class="active"><a href="#electricityinfo" id="electricityinfo_tab" role="tab" data-toggle="tab" aria-controls="electricityinfo" aria-expanded="true"><b>水电费信息</b></a></li>
+		    <!-- <li role="presentation"><a href="#recordPay" role="tab" id="recordPay_tab" data-toggle="tab" aria-controls="recordPay"><b>缴费登记</b></a></li> -->
+		  	<li role="presentation"><a href="#account" role="tab" id="account_tab" data-toggle="tab" aria-controls="account"><b>账户信息</b></a></li>
+		</ul>
+
+		<div id="myTabContent" class="tab-content">
+			<!--用电信息tab-->
+	        <div role="tabpanel" class="tab-pane fade in active" id="electricityinfo" aria-labelledBy="electricityinfo_tab">
+
+	        	<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title"><b>查询条件</b></h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-horizontal" id="uploadForm"  method="post" >
+					    <div class="row">
+					    	<div class="col-md-12">
+								<label>费用类别：</label>
+					    		<select id="search_type">
+					    			<option value="2">---请选择---</option>
+								  
+								</select>
+								&nbsp;
+					    		<label>楼栋号：</label>
+					    		<select id="search_build">
+									<option value="0">---请选择---</option> 
+								</select>
+								&nbsp;
+								<label >单元号：</label>
+					    		<select	id="search_unit">
+									<option value="0">---请选择---</option>
+								</select>
+								&nbsp;
+								<label >房间号：</label>
+								<select	id="search_room">
+					    			<option value="0">---请选择---</option>
+								</select>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="button" id="button_query" value="查询" class="btn btn-primary btn-sm">
+								&nbsp;&nbsp;
+								<input type="reset" id="button_resert" value="重置" class="btn btn-danger btn-sm">
+					    
+					    	</div>
+							</form>
+
+					    </div>
+					</div>
+
+				</div>
+
+				<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title"><b>水电费信息列表</b></h3>
+					</div>
+					<div class="panel-body">
+					    <div class="table-responsive">
+							<table id="electricityinfo_table" class="table table-bordered table-striped table-hover tablesorter" >
+								<thead>
+									<tr class="active">
+										<th class="hide">账单号</th>
+										<th>房间号</th>
+										<th>类别</th>
+										<th>用量</th>
+										<th>单价/元</th>
+										<th>应缴费用</th>
+										<th>抄表日期</th>
+										<th>缴费状态</th>
+									</tr>
+								</thead>
+								<tbody id="electricityinfo_tableBody">
+									 <tr>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									  <td></td>
+									 </tr>  
+								</tbody> 
+							
+							</table>
+							
+						</div>
+		
+
+					</div>
+				</div>
+
+	        </div>
+
+		  
+		    <!--登记缴费tab-->
+	       <!--  <div role="tabpanel" class="tab-pane fade" id="recordPay" aria-labelledBy="recordPay_tab">
+	        	<div class="panel panel-info">
+	        					 <div class="panel-heading">
+	        					    <h3 class="panel-title"><b>缴费信息登记</b></h3>
+	        					</div>
+	        					<div class="panel-body">
+	        						<form class="form-horizontal" id="uploadForm" enctype="multipart/form-data" method="post" >
+	        
+	        						<div class="row"> 
+	        							<div class="col-md-1">
+	        							  <label style="float:right">住户编号</label>
+	        							</div>
+	        							<div class="col-md-2">
+	        							  <input type="text" name="building.number" class="form-control" id="buildnum">
+	        							</div>
+	        							<div class="col-md-1">
+	        							  <label style="float:right">收费类别</label>
+	        							</div>
+	        							<div class="col-md-2">
+	        							  <input type="text" name="building.type" class="form-control"  id="buildtype">
+	        							</div>
+	        							<div class="col-md-1">
+	        							  <label style="float:right" class="">缴费金额</label>
+	        							</div>
+	        							<div class="col-md-2">
+	        							  <input type="text" name="building.name" class="form-control"  id="buildname" >
+	        							</div>
+	        							<div class="col-md-1">
+	        							  <label style="float:right" class="">缴费时间</label>
+	        							</div>
+	        							<div class="col-md-2">
+	        							  <input type="text" class="form-control" name="user.paytime" readonly id="paytime">
+	        							</div> 
+	        						 </div> 
+	        
+	        						</form>
+	        					</div>
+	        
+	        				</div>
+	        </div> -->
+		
+			<!--账户信息tab-->
+	        <div role="tabpanel" class="tab-pane fade" id="account" aria-labelledBy="account_tab">
+	        	<div class="panel panel-info">
+					<div class="panel-heading">
+					    <h3 class="panel-title"><b>账户信息列表</b></h3>
+					</div>
+					<div class="panel-body">
+					    <div class="table-responsive">
+							<table  id="accountinfo_table" class="table table-bordered table-striped table-hover tablesorter">
+								<thead>
+									<tr class="active">
+										<th>房间号</th>
+										<th>账户余额(元)</th>
+									</tr>
+								</thead>
+								<tbody id="accountinfo_tableBody">
+									 <tr>
+									  <td></td>
+									  <td></td>
+									 </tr>  
+								</tbody> 
+							
+							</table>
+						</div>	
+
+					</div>
+				</div>
+	        </div>
+	      
+    	</div>
+	</div>
+			
+			<div id="sign_up" >
+	                <!-- <h3 id="see_id" class="sprited" >Can I see some ID?</h3> -->
+	                <span>请输入缴费信息</span>
+	                <div id="sign_up_form">
+	                    <label><strong>房间号:</strong> <input id="roomnum" class="sprited"/></label>
+						<label><strong>应缴金额:</strong> <input id="shouldpay" class="sprited"/></label>
+	                    <label><strong>缴费金额:</strong> <input name="amount" id="paynum" class="sprited"/></label>
+						<br>
+						
+	                    <div id="actions">
+	                        <!-- <a class="close form_button sprited" id="cancel" href="#">Cancel</a> -->
+	                        <!-- <a class="form_button sprited" id="log_in" href="#">Sign in</a> -->
+						    <!-- <a class="form_button " id="cancel" href="#">取消</a> -->
+	                        <!-- <a class="form_button " id="log_in" href="#">确定</a> -->
+							<button class="form_button " id="button_submmit" href="#">确定</button>
+							<button class="form_button " id="cancel" href="#">取消</button>
+							
+	                    </div>
+	                </div>
+	          
+	        </div>
+		
+	
+	<script src="../asset/js/jquery-1.11.1.min.js"></script>
+	<script src="../asset/js/getData.js"></script>
+	<script src="../asset/js/jquery-ui.custom.min.js"></script>
+    <script src="../asset/js/table.js"></script> 
+    <script src="../asset/js/jquery.lightbox_me.js"></script> 
+	<script src="../asset/js/constant.js"></script> 
+
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src="../bootstrap/js/tab.js"></script>                                      <!--  tab调用 -->
+	<script src="../asset/js/jquery.dataTables.min.js" type="text/javascript"></script><!-- .dataTable()函数调用 -->
+	<script src="../asset/js/jqPaginator.js"></script>
+	<script src="../asset/js/fee/ElectricityManage.js"></script>
+<!--
+    <script type="text/javascript" charset="utf-8">
+	   /*    $(function() {
+	            function launch() {
+	                 $('#sign_up').lightbox_me({centered: true, onLoad: function() { $('#sign_up').find('input:first').focus()}});
+	            }
+	            
+		  $('#try-1').click(function(e) {
+			$('#sign_up').lightbox_me({
+				centered: true,
+				closeClick:false,
+				onLoad: function() { 
+					$('#sign_up').find('input:last').focus()
+					}
+				});
+			e.preventDefault();
+		});
+	            
+	            
+	         //   $('table tr:nth-child(even)').addClass('stripe');
+	        });
+			*/
+	 </script>
+-->
+
+</body>
+
+</html>

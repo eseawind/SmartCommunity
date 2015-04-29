@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>sendLetter</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+	
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	 <style>
+      .panel-body{
+        font-size:18px;
+      }
+
+      .input-textsize{
+        font-size:18px;
+      }
+
+  </style>
+</head>
+<body style="padding-top: 10px;">
+
+    <div class="container-fluid">
+      <div class="panel panel-info">
+        <div class="panel-heading text-center"><h4><b>致住户信</b></h4></div>
+        <div class="panel-body">
+            <form action="" method="post" role="form">
+              
+              <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label >用户名</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-12">
+                      <input type="text" id="username" class="form-control input-textsize"  placeholder="用户名" maxlength="4" required autofocus>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="letter_content">内容</label>
+                <textarea id="notice_content" class="form-control input-textsize" placeholder="内容" rows="8" required></textarea>
+              </div>
+
+              <div class="form-group text-center">
+                <div class="row"> 
+                  <div class="col-md-3 col-md-offset-3">
+                    <input type="button" id="button_submmit" value="发送" class="btn btn-primary btn-lg">
+                  </div>
+                  <div class="col-md-3">
+                    <input type="reset" value="重置" class="btn btn-danger btn-lg">
+                  </div>
+                </div>
+              </div>
+            </form>
+           
+        </div> 
+      </div>     
+    </div>
+
+
+
+	<script src="../asset/js/jquery.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../asset/js/serverPath.js"></script>
+  
+
+</body>
+
+</html>

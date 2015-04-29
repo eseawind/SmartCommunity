@@ -1,0 +1,12 @@
+#nav {
+	width: 300px;
+	float: left;
+	margin-right: 20px;
+}
+#grid {
+	width: 450px;
+	float: left;
+}
+.ui-bar {
+	height: 120px;
+}

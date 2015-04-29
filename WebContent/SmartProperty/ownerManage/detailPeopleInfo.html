@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<head>
+	<title>用户信息详情</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+	 <style>
+      	.page-header {
+      		margin-top: -6px;
+      		font-size: 20px;
+      	}
+      	.panel-heading {
+      		font-size: 21px;
+      	}
+      	label {
+      		font-size: 18px;
+      	}
+      	.col-marginleft {
+      		margin-left: 0px;
+      	}
+      	.page-margintop {
+      		margin-top: 10px;
+      	}
+      	label {
+      		font-size: 14px;
+      	}
+      	.btn {
+      		margin-top: 25px;
+      		margin-left: 12px;
+      	}
+      	.row {
+       		margin-top: 0px;
+       }
+    </style>
+</head>
+<body style="padding-top: -10px;">
+
+	<div class="container-fluid">
+		<div class="panel panel-info">
+			<div class="panel-heading text-center">
+				<b>用户信息详情</b>
+			</div>
+			<div class="panel-body pull-center"> 
+				
+				<form class="form-horizontal" id="uploadForm" name="roomowner" role="form" method="post">
+				    
+					<div class="row">
+                        <div style="display: none">
+                            <label class="">用户id</label><font color='red' size=3 > *</font>
+							<input type="text" class="form-control input-sm" name="roomowner.id" id="roomownerid">
+                        </div>
+						<div class="col-md-2 col-md-offset-1">
+							<label class="">房间号</label>
+							<input type="text" class="form-control input-sm" name="roomowner.roomnumber" id="roomnumber">
+						</div>
+						<div class="col-md-2">
+							<label class="">用户姓名</label>
+							<input type="text" class="form-control input-sm" name="roomowner.name" id="name">
+						</div>
+                        <div class="col-md-2">
+							<label class="">性别</label>
+							<select id="sex" name="roomowner.sex" class="form-control input-sm">
+								<option value="男">男</option>
+								<option value="女">女</option>	    
+							</select>
+						</div>
+                        <div class="col-md-2">
+							<label class="">类别</label>
+							<select id="type" name="roomowner.type" class="form-control input-sm">
+								<option value="1">业主</option>
+								<option value="2">租户</option>	    
+							</select>
+						</div>
+						<div class="col-md-2">
+							<label class="">身份证号</label>
+							<input type="text" class="form-control input-sm" name="roomowner.identity" id="identity">
+						</div>
+						
+				    </div>
+
+				    <div class="row">
+						<div class="col-md-4 col-md-offset-1">
+							<label class="">户口所在地</label>
+							<input type="text" class="form-control input-sm" name="roomowner.registeredresidence" id="registeredresidence">
+						</div>
+				    	<div class="col-md-2 ">
+							<label class="">民族</label>
+							<input type="text" class="form-control input-sm" name="roomowner.nation" id="nation">
+						</div>
+						<div class="col-md-2">
+							<label class="">政治面貌</label>
+							<input type="text" class="form-control input-sm" name="roomowner.politicalaffiliation" id="politicalaffiliation">
+						</div>
+						<div class="col-md-2">
+							<label class="">文化程度</label>
+							<input type="text" class="form-control input-sm" name="roomowner.educationlevel" id="educationlevel">
+						</div>
+						
+				    </div> 
+
+				    <div class="row">
+				    	<div class="col-md-2 col-md-offset-1">
+							<label class="">工作单位</label>
+							<input type="text" class="form-control input-sm" name="roomowner.company" id="company">
+						</div>
+						<div class="col-md-2">
+							<label class="">婚姻状况</label>
+							<input type="text" class="form-control input-sm" name="roomowner.maritalstatus" id="maritalstatus">
+						</div>
+						<div class="col-md-2">
+							<label class="">特长爱好</label>
+							<input type="text" class="form-control input-sm" name="roomowner.hobbies" id="hobbies">
+						</div>
+						
+						<div class="col-md-2">
+							<label class="">联系电话</label>
+							<input type="text" class="form-control input-sm" name="roomowner.telephone" id="telephone">
+						</div>
+						<div class="col-md-2">
+							<label class="">QQ号</label>
+							<input type="text" class="form-control input-sm" name="roomowner.qq" id="qq">
+						</div>
+				    </div> 
+				    <div class="row">
+						<div class="col-md-2 col-md-offset-1">
+							<label class="">邮箱</label>
+							<input type="text" class="form-control input-sm" name="roomowner.mail" id="mail">
+						</div>
+					
+                        <div class="col-md-2">
+							<label class="">入住时间</label>
+							<input type="text" id="immigratedate" class="form-control input-sm" name="roomowner.immigratedate" readonly >
+						</div>
+						<div class="col-md-2">
+							<label class="">迁出时间</label>
+							<input type="text" id="quitdate" class="form-control input-sm" name="roomowner.quitdate" readonly>
+						</div>
+				    					
+						<div class="col-md-2">
+							<label class="">产权人</label>
+							<input type="text" class="form-control input-sm" name="roomowner.propertyowner" id="propertyowner">
+						</div>
+						<div class="col-md-2">
+							<label class="">产权人身份证号</label>
+							<input type="text" class="form-control input-sm" name="roomowner.propertyowneridentity" id="propertyowneridentity">
+						</div>
+				    </div> 
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-1">
+							    <label class="">籍贯</label>
+							    <input type="text" class="form-control input-sm" name="roomowner.nativeplace" id="nativeplace">
+					    </div>
+                    </div>
+                     
+				</form>   
+                 <div class="row">
+				    	<div class="col-md-3 col-md-offset-5">
+                             <button id="save_change" type="button" class="btn btn-info btn-lg">保存修改</button>
+							 <button id="exit_button" type="button" class="btn btn-info btn-lg">返回</button>
+						</div>
+				    </div> 
+			</div>			
+		</div>
+
+		<!--<div class="panel panel-info"> 
+				<div class="panel-heading text-center">
+				            <table class="panel-heading" id="head" style="border:none">
+						        <tr>
+                                    <td width="80%">
+                                        家庭成员
+                                    </td>
+                                    <td width="5%">                               
+                                        <input id="delete_button" type="button" class="btn btn-info btn-sm" value="添加成员"></input>
+                                    </td>
+                                    
+                                </tr> 
+                           </table> 
+				</div>
+						<div class="table-responsive">
+						<table id="notice_table" class="table table-bordered table-striped table-hover tablesorter">
+						<thead>
+							<tr class="active">
+								<th width="10%">姓名</th>
+                                <th width="10%">性别</th>
+								<th width="10%">与户主关系</th>
+								<th width="15%">身份证号</th>
+								<th width="10%">联系电话</th>
+								<th width="15%">邮箱</th>
+								<th width="10%">户口所在地</th>
+							</tr>
+						</thead>
+						
+						<tbody> 
+	                       <!-- <tr >  
+	                            <td class="">张三</td> 
+	                            <td class="">父亲</td> 
+	                            <td class="">123456789098765432</td> 
+	                            <td class="">男</td> 
+	                            <td class="">12345678909</td> 
+	                            <td class="">2345676543</td> 
+	                            <td class=""><a id='' href='detailPeopleInfo.html?item='+i>查看详细</a></td> 
+	                    
+	                        </tr> 
+	                        <tr >  
+	                            <td class="">李四</td> 
+	                            <td class="">母亲</td> 
+	                            <td class="">123456789098765432</td> 
+	                            <td class="">男</td> 
+	                            <td class="">12345678909</td> 
+	                            <td class="">2345676543</td> 
+	                            <td class=""><a id='' href='detailPeopleInfo.html?item='+i>查看详细</a></td> 
+	                           
+	                        </tr>                               
+						</tbody>
+					</table>
+					</div>	
+			</div>-->
+
+				
+	</div>
+
+	<script  src="../asset/js/jquery-1.11.1.min.js"></script>
+	<script  src="../asset/js/jquery-ui.custom.min.js"></script>
+	<script  src="../bootstrap/js/bootstrap.min.js"></script>
+	<script  src="../asset/js/getData.js"></script>
+	<script  src="../asset/js/datePicker.js"></script>
+    <script  src="../asset/js/constant.js"></script>
+	<script  src="../asset/js/ownerManage/detailPeopleInfo.js"></script>
+	
+</body>
+
+</html>

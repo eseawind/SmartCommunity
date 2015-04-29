@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="readme.css">
+<title>readme</title>
+
+<script language="javascript">  
+    function changeF()  
+    {  
+       document.getElementById('makeupCo').value=  
+       document.getElementById('makeupCoSe').options[document.getElementById('makeupCoSe').selectedIndex].value;  
+    }  
+</script>  
+</head>
+<body>
+
+  
+<span >  
+<select name="makeupCoSe" id="makeupCoSe" style="width:190px;height:20px;margin:-2px;" onChange="changeF();">  
+    <option id='1' value='java'>java</option>  
+    <option id='2' value='c++'>c++</option>  
+    <option id='3' value='python'>python</option>  
+    <OPTION id="99999" VALUE="" SELECTED>  
+</select>  
+</span>  
+<span >  
+    <input type="text" name="makeupCo" id="makeupCo" value="请选择或输入" style="width:170px;height:15px;border:0pt;">  
+</span>  
+</body>
+</html>

@@ -1,0 +1,220 @@
+﻿<!DOCTYPE >
+<html lang="en">
+<head>
+	<title>添加业主信息</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/css/typeface.css" type="text/css">
+	<style>
+    .divGlobal{min-width: 1000px;width: expression(document.body.clientWidth < 1000? "1000px": "100%" )/*最小宽度设置*/;width:100%;}
+    .dataTable { border-top: 1px solid #009286; border-right: 1px solid #009286; border-bottom: 1px solid #009286;}  
+    .dataTable thead tr{ font-weight:bold; text-align:center;}  
+    .dataTable tbody tr td{text-align:left; margin:0px; padding:8px; white-space:nowrap; overflow:hidden;}  
+    .dataTable .null{margin:0px; padding:0px;}  
+    .dataTable tbody tr{line-height: 120%;}  
+    .dataTable .even{ background:#E1F4EE;}     /* 偶数行样式 E1F4EE*/  
+    .dataTable .odd{ background:#E1F4EE;}      /* 奇数行样式 E1F4EE*/  
+    .dataTable .over{background:#CCCC99;}      /* 鼠标掠过行样式 CCCC99*/  
+    .dataTable .selected{ background:#6F4DFF;color:#ffffff;} /* 选中行样式 BFDFFF*/  
+</style> 
+</head>
+<body style="padding-top: 10px;">
+	<div class="container-fluid divGlobal">
+		<div class="panel panel-info">
+			<div class="panel-heading text-center">
+				<b class="h1_font">添加业主信息</b>
+			</div>
+			<div class="panel-body pull-center"> 
+				<form class="form-horizontal" id="uploadForm" name="roomowner" role="form" method="post">   
+					<div class="row">
+						<div class="col-md-2 col-md-offset-1">
+							<label class="label_font">房间号</label><font color='red' size=3 > *</font>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.roomnumber" id="roomnumber">
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">用户姓名</label><font color='red' size=3 > *</font>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.name" id="name">
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">性别</label>
+							<select id="sex" name="roomowner.sex" class="form-control input-sm select_font">
+								<option value="男">男</option>
+								<option value="女">女</option>	    
+							</select>
+						</div>
+                          <div class="col-md-2">
+							<label class="label_font">用户类别</label><font color='red' size=3 > *</font>
+							<select id="type" name="roomowner.type" class="form-control input-sm select_font">
+								<option value="1">-----业主-----</option> 
+                                <option value="2">-----租户-----</option> 
+							</select>
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">身份证号</label><font color='red' size=3 > *</font>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.identity" id="identity">
+						</div>
+						
+				    </div>
+
+				    <div class="row">
+						<div class="col-md-4 col-md-offset-1">
+							<label class="label_font">户口所在地</label><font color='red' size=3 > *</font>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.registeredresidence" id="registeredresidence">
+						</div>
+				    	<div class="col-md-2 ">
+							<label class="label_font">民族</label>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.nation" id="nation">
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">政治面貌</label>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.politicalaffiliation" id="politicalaffiliation">
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">文化程度</label>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.educationlevel" id="educationlevel">
+						</div>
+						
+				    </div> 
+
+				    <div class="row">
+				    	<div class="col-md-2 col-md-offset-1">
+							<label class="label_font">工作单位</label>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.company" id="company">
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">婚姻状况</label>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.maritalstatus" id="maritalstatus">
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">特长爱好</label>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.hobbies" id="hobbies">
+						</div>
+						
+						<div class="col-md-2">
+							<label class="label_font">联系电话</label><font color='red' size=3 > *</font>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.telephone"onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" id="telephone">
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">QQ号</label>
+							<input type="text" class="form-control input-sm input_font" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" name="roomowner.qq" id="qq">
+						</div>
+				    </div> 
+
+				    <div class="row">
+						<div class="col-md-2 col-md-offset-1">
+							<label class="label_font">邮箱</label>
+							<input type="email" class="form-control input-sm input_font" name="roomowner.mail" id="mail">
+						</div>
+						
+						<div class="col-md-2">
+							<label class="label_font">入住时间</label>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.immigratedate" readonly id="immigratedate">
+						</div>
+				    					
+						<div class="col-md-2">
+							<label class="label_font">产权人</label><font color='red' size=3 > *</font>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.propertyowner" id="propertyowner">
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">产权人身份证号</label><font color='red' size=3 > *</font>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.propertyowneridentity" id="propertyowneridentity">
+						</div>
+                        <div class="col-md-2 ">
+							<label class="label_font">籍贯</label>
+							<input type="text" class="form-control input-sm input_font" name="roomowner.nativeplace" id="nativeplace">
+						</div>
+				    </div> 
+                    <br>
+				    <div class="row">
+					 	<div class="col-md-2 col-md-offset-1">
+						<button id="save_change_button" type="button" class="btn btn-info btn-lg button_font">保存修改</button>
+						</div>
+				    	<div class="col-md-1 col-md-offset-6">				
+							<!--<input type="reset" value="重置" class="btn btn-danger btn-lg button_font">-->
+                        <button  type="reset" class="btn btn-danger btn-lg button_font">重置</button>
+                        </div>
+                        <div class="col-md-1">	
+							<button id="next_button" type="button" class="btn btn-info btn-lg button_font">下一个</button> 
+						</div>
+				    </div>
+				</form>    
+			</div>
+		</div>
+		<div class="panel panel-info">
+		        <div class="panel-heading text-center">
+					   <table class="panel-heading" id="head" style="border:none">
+						        <tr>
+                                    <td width="80%" style="text-align:left;font-weight:bold" class="h1_font">
+                                        最近添加记录
+                                    </td>
+                                    <td>                               
+                                        <button id="delete_button" type="button" style="background:Crimson" class="btn btn-info btn-sm button_font">删除</button> 
+                                    </td>
+                                    <td >                               
+                                        &nbsp; &nbsp;&nbsp; &nbsp;
+                                    </td>
+                                    <td >                 
+                                        <button id="submit_button" type="button" style="background:Blue" class="btn btn-info btn-sm button_font">提交</button> 
+                                    </td>
+                                    <td >                               
+                                        &nbsp; &nbsp;&nbsp; &nbsp;
+                                    </td>
+                                    <td >                               
+                                        <button id="exit_button" type="button" style="background:Blue" class="btn btn-info btn-sm button_font">退出</button> 
+                                    </td>
+                                </tr> 
+                           </table> 
+				</div>  
+                                   
+            <div class="form-group">
+					<div class="panel-body">                             
+					       <div class="table-responsive">    
+							<table class="table table-bordered table-striped table-hover tablesorter table_font" id="table">
+								  <thead>
+									<tr>
+									  <th width="5%">操作</th>  
+									  <th width="8%">房间号</th>
+									  <th width="8%">姓名</th>
+									  <th width="5%">性别</th>
+									  <th width="10%">身份证号</th>
+									  <th width="20%">户口所在地</th>
+									  <th width="9%">联系电话</th>
+									  <th width="10%">产权人</th>
+									  <th width="15%">产权人身份证</th>
+                                      <th width="10%">入住时间</th>
+                                      <th style="display:none;">用户类别</th>
+									  <th style="display:none;">邮箱</th>
+									  <th style="display:none;">QQ</th>
+								      <th style="display:none;">工作单位</th>
+								      <th style="display:none;">特长爱好</th>
+									  <th style="display:none;">籍贯</th>
+									  <th style="display:none;">民族</th>
+									  <th style="display:none;">文化程度</th>						  
+									  <th style="display:none;">婚姻状况</th>																	
+                                      <th style="display:none;">政治面貌</th>
+                                    
+									</tr>
+								  </thead>
+								  <tbody id="table_body">
+								  </tbody> 
+							</table>
+						</div>   
+				  </div>
+            </div>
+           </div>
+            
+        
+    </div>
+	
+	<script  src="../asset/js/jquery-1.11.1.min.js"type="text/javascript"></script>
+	<script  src="../asset/js/jquery-ui.custom.min.js"type="text/javascript"></script>
+	<script  src="../bootstrap/js/bootstrap.min.js"type="text/javascript"></script>
+	<!--<script  src="../asset/js/table.js"type="text/javascript"></script> -->
+	<script  src="../asset/js/getData.js"type="text/javascript"></script>
+	<script  src="../asset/js/datePicker.js"type="text/javascript"></script>
+	<script  src="../asset/js/constant.js"type="text/javascript"></script>
+    <script src="../asset/js/jquery.dataTables.min.js" type="text/javascript"></script>
+	<script  src="../asset/js/ownerManage/addRoomownerInfo.js"type="text/javascript"></script>
+</body>
+</html>

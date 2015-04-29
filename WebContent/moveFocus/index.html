@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<link rel="stylesheet" type="text/css" href="css/jquery.jslides.css" media="screen" />
+<title>jQuery手机触屏左右滑动切换焦点图特效代码 - 【科e互联】</title>
+<script type="text/javascript" src="js/jQuery.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+</head>
+<body class="keBody">
+<h1 class="keTitle">jQuery手机触屏左右滑动切换焦点图特效代码</h1>
+<div class="kePublic">
+<!--效果html开始-->
+<div class="wraper">
+  <header id="scroll_pic_view" class="scroll_pic_view" style="overflow: hidden; ">
+    <div id="scroll_pic_view_div" style="width: 3840px; -webkit-transition: -webkit-transform 0ms cubic-bezier(0.33, 0.66, 0.66, 1); -webkit-transform-origin: 0px 0px; -webkit-transform: translate(0px, 0px) translateZ(0px); ">
+      <ul id="scroll_pic_view_ul">
+        <li style="width: 640px; "> <a onclick="return false;"> <img src="images/banner.jpg" width="640" height="300"> </a> </li>
+        <li style="width: 640px; "> <a onclick="return false;"> <img src="images/banner2.jpg" width="640" height="300"> </a> </li>
+        <li style="width: 640px; "> <a href="#"> <img src="images/banner.jpg" width="640" height="300"> </a> </li>
+        <li style="width: 640px; "> <a onclick="return false;"> <img src="images/banner2.jpg" width="640" height="300"> </a> </li>
+        <li style="width: 640px; "> <a onclick="return false;"> <img src="images/banner.jpg" width="640" height="300"> </a> </li>
+        <li style="width: 640px; "> <a onclick="return false;"> <img src="images/banner2.jpg" width="640" height="300"> </a> </li>
+		<li style="width: 640px; "> <a onclick="return false;"> <img src="images/banner2.jpg" width="640" height="300"> </a> </li>
+      </ul>
+    </div>
+    <div>
+      <ol id="scroll_pic_nav" class="scroll_pic_nav">
+        <script>
+				(function(d, $){
+					var scrollPicView = d.getElementById("scroll_pic_view"),
+					scrollPicViewDiv = d.getElementById("scroll_pic_view_div"),
+					lis = scrollPicViewDiv.querySelectorAll("li"),
+					w = scrollPicView.offsetWidth,
+					len = lis.length;
+					for(var i=0; i<len; i++){
+						lis[i].style.width = w+"px";
+						if(i == len-1){
+							scrollPicViewDiv.style.width = w * len + "px";
+						}
+					}
+
+					var scroll_pic_view = new iScroll('scroll_pic_view', { 
+						snap: true,
+						momentum: false,
+						hScrollbar: false,
+						useTransition: true,
+						onScrollEnd: function() {
+							$("#scroll_pic_nav li").removeClass("on").eq(this.currPageX).addClass("on");
+							//$("#scroll_pic_nav li.on").prev().addClass("left");
+							//$("#scroll_pic_nav li.on").next().removeClass("left");	
+							
+							var  list=$("#scroll_pic_nav li");
+							for(var k=0;k<list.length;k++){
+								if(k<this.currPageX)
+									$(list[k]).addClass("left");
+								else
+									$(list[k]).removeClass("left");
+							}												
+						}
+					});
+					//
+					var nav_lis = new Array(lis.length);
+					d.write('<li class="on"></li>');
+					for(var i=1; i<nav_lis.length; i++){										
+						d.write("<li><span></span></li>");				
+					}
+				})(document, $);
+			</script> 
+      </ol>
+    </div>
+  </header>
+</div>
+<!--效果html结束-->
+<div class="clear"></div>
+</div>
+<div class="keBottom">
+<p class="keTxtP">科e互联网页特效集锦---更多特效请访问 <a class="keUrl" href="http://www.internetke.com" target="_blank">www.internetke.com</a></p>
+<p class="keTxtP">本站导航：
+<a href="http://www.internetke.com/" target="_blank" class="cor_bs">网站建设</a> | 
+<a href="http://www.internetke.com/material/" target="_blank" class="cor_bs">网页素材</a> | 
+<a href="http://www.internetke.com/effects/" target="_blank" class="cor_bs">网页特效</a> | 
+<a href="http://www.internetke.com/share/" target="_blank" class="cor_bs">设计分享</a> | 
+<a href="http://www.internetke.com/tutorial/" target="_blank" class="cor_bs">建站教程</a> | 
+<a href="http://www.internetke.com/model/" target="_blank" class="cor_bs">网站模版</a> | 
+<a href="http://www.internetke.com/appreciate/" target="_blank" class="cor_bs">酷站赏析</a>
+</p>
+<p class="keTxtP">＊尊重他人劳动成果，转载请自觉注明出处！注：此代码为【科e整理/原创特效】仅供学习交流，请勿用于商业用途。
+<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=a7df3558c291e0407375b9ad649d96a6e507286ffeb0650c65a221d1500a0779" class="button red" title="北京网站建设,网页特效QQ交流群-科e互联">加入QQ交流群</a></p>
+</div>
+</body>
+</html>

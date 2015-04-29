@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>index</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+	
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	
+	 <style>
+
+        .col-xs-10{
+            
+        }
+
+        .row {
+            margin-left: -13px;
+            margin-right: -24px;
+        }
+
+        .userlabel {
+        	font-size: 15px;
+        	color: #9ba8b6;
+        }
+
+	.hideimage-margintop {
+			
+		margin-top: -700px;
+	}
+
+    </style>
+	
+</head>
+<body style="padding-top: 36px;" >
+		
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	    <div class="container-fluid"> 
+	    	<div class="navbar-header">
+	    		<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		    	<span class="navbar-brand">
+		    		<a href="index.html">
+				        <img alt="Brand" width="40px" height="30px" src="images/wuye.png">智慧物业管理系统
+				    </a>    
+		    	</span>
+		      	 	 
+		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				
+		        <ul class="nav navbar-nav navbar-right">
+
+					<li class="">
+			        	<a href="#">
+			        	欢迎您，<label id="user_name"></label>
+			        	</a>
+		        	</li>
+
+					<li class="dropdown">
+			            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+			            	<span class="glyphicon glyphicon-user"></span>账号管理	
+			            	<span class="caret"></span>
+			            </a>
+			            <ul class="dropdown-menu">
+			              <li><a href="#" target="_blank"><i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;我的账号</a></li>
+			              
+			              <li role="presentation" class="divider"></li>
+			              <li ><a href="#"><i class="glyphicon glyphicon-off"></i>&nbsp;&nbsp;退出</a></li>
+			            </ul>
+		            </li>
+
+		        </ul>		        
+		    </div>            
+	    </div> 
+  	</div>
+
+
+<!--
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2">
+                <div class="">
+                  <iframe class="embed-responsive-item" name="menu" src="menu.html" width="230px" height="570px" scrolling="yes" frameborder="1"></iframe>
+                </div>
+                    
+            </div>
+            <div class="col-xs-10" height="570px">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" name="main" src=""  scrolling="yes" frameborder="1"></iframe>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+-->
+    <div class="container-fluid">
+        <div class="row">
+            <frameset>
+            
+                <iframe id="menuframe"  name="menu" src="menu.html"  width="13%" scrolling="yes" frameborder="1" ></iframe>
+		<img id="hide_menu" class="hideimage-margintop" width="1%" src="images/hideimage.jpg">
+                <iframe id="mainframe"  name="main" src="main.html" scrolling="yes" width="85%" frameborder="1" ></iframe> 
+
+
+<!--                <iframe height="566px" width="15%" name="menu" src="menu.html" scrolling="yes" frameborder="1" style="padding-top: 0px;"></iframe>
+                <iframe height="566px" width="84%" name="main" scrolling="yes" frameborder="1" ></iframe>
+       -->
+            </frameset> 
+        </div>
+        
+    </div>
+
+
+   
+    <footer class="text-center" style="background: #ccc">
+             Copyright ©2014 All rights reserved.
+    </footer>
+    
+
+	<script src="asset/js/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/dropdown.js"></script>
+	<script src="bootstrap/js/collapse.js"></script>
+	<script src="bootstrap/js/holder.min.js"></script>
+	<script src="bootstrap/js/application.js"></script>
+	<script src="asset/js/globalvariable.js"></script>
+	<script src="asset/js/jquery.cookie.js"></script>
+	<script src="asset/js/index.js"></script>
+	<script src="asset/js/ws.js"></script>
+	<script type="text/javascript"> 
+	
+	</script> 
+		
+	 
+
+
+</body>
+
+</html>

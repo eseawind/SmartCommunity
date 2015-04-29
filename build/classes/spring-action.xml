@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- spring 配置 action 的文件 -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd ">
+
+	<bean id="testAction" class="com.test.Test" scope="prototype">
+		<property name="testService" ref="testService"></property>
+	</bean>
+	<!-- 文件下载 -->
+	<bean id="downloadAction" class="com.smartcommunity.action.DownloadAction"
+		scope="prototype">
+	</bean>
+	<!-- 文件上传 -->
+	<bean id="uploadAction" class="com.smartcommunity.action.UploadAction"
+		scope="prototype">
+	</bean>
+	<!-- 公告管理 -->
+	<bean id="noticeAction" class="com.smartcommunity.action.NoticeAction"
+		scope="prototype">
+
+		<property name="noticeService" ref="noticeService"></property>
+	</bean>
+
+	<!-- 报修管理 -->
+	<bean id="repairAction" class="com.smartcommunity.action.RepairAction"
+		scope="prototype">
+
+		<property name="repairService" ref="repairService"></property>
+		<property name="deviceService" ref="deviceService"></property>
+	</bean>
+
+	<!-- 抄表管理 -->
+	<bean id="meterAction" class="com.smartcommunity.action.MeterAction"
+		scope="prototype">
+		<property name="meterService" ref="meterService"></property>
+	</bean>
+
+	<!-- 楼宇房间管理 -->
+	<bean id="buildingAction" class="com.smartcommunity.action.BuildingAction"
+		scope="prototype">
+		<property name="buildingService" ref="buildingService"></property>
+	</bean>
+	<!-- 投诉信息管理 -->
+	<bean id="complaintsAction" class="com.smartcommunity.action.ComplaintsAction"
+		scope="prototype">
+		<property name="complaintsService" ref="complaintsService"></property>
+	</bean>
+		<!-- 用户信息管理 -->
+	<bean id="userManageAction" class="com.smartcommunity.action.UserManageAction"
+		scope="prototype">
+		<property name="userManageService" ref="userManageService"></property>
+	</bean>
+		<!-- 装修管理 -->
+		<bean id="decorateAction" class="com.smartcommunity.action.DecorateAction"
+		scope="prototype">
+		<property name="decorateService" ref="decorateService"></property>
+	</bean>
+	
+		<!-- tongyong -->
+	<!-- 抄表管理 -->
+	<bean id="tMeterAction" class="com.smartcommunity.action.TongYongMeterAction"
+		scope="prototype">
+		<property name="baseService" ref="meterBaseService"></property>
+		<property name="parameters.method" value="selectByExample"></property>
+	</bean>
+		<bean id="androidUpdateAction" class="com.smartcommunity.action.AndroidUpdateAction"
+		scope="prototype">
+		</bean>
+</beans>  

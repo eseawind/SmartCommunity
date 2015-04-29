@@ -1,0 +1,111 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>添加公告</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<link href="../asset/css/jquery.dataTables.min.css" rel="stylesheet">
+	
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+
+	<link href="../asset/css/styles.css" rel="stylesheet">
+
+	 <style>
+      .panel-heading {
+      		font-size: 21px;
+      	}
+
+      	.row {
+       		margin-top: 16px;
+       }
+
+    </style>
+   
+
+</head>
+<body style="padding-top: 10px;">
+	<div class="container-fluid">
+		<div class="panel panel-primary">
+		  	<div class="panel-heading text-center h1_font"><b>添加公告信息</b></div>
+		  	<div class="panel-body">
+
+		    	 <form class="form-horizontal" role="form">
+					   <div class="row">
+						<div class="col-md-2 col-md-offset-1">
+							<label class="label_font">公告标题</label>
+							<input type="text"  id="notice_title" class="form-control input_font" name="notice.title"  placeholder="字数不能超过4个" maxlength="4" required autofocus>
+						</div>
+						<div class="col-md-2">
+							<label class="label_font">发布人</label>
+							<input type="text" id="notice_author" class="form-control input_font" name="notice.author"  >
+						</div>
+                        
+					</div>
+
+
+					<div class="row">
+						<div class="col-md-2 col-md-offset-1">
+							<label class="label_font">楼栋号</label>
+							<select id="notice_build" name="notice.build" class="form-control select_font">
+								<option value="">---请选择---</option>
+							</select>
+						    </div>
+                        <div class="col-md-2 ">
+							<label class="label_font">单元号</label>
+							<select id="notice_unit" name="notice.unit" class="form-control select_font">
+								<option value="">---请选择---</option>
+							</select>
+						    </div>
+                        <div class="col-md-2 ">
+							<label class="label_font">房间号</label>
+							<select id="notice_room" name="notice.room" class="form-control select_font">
+								<option value="">---请选择---</option>
+							</select>
+						    </div>
+                    </div>
+
+                  
+				     <div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<label class="label_font">公告内容</label>
+							<textarea id="notice_content" class="form-control input-textsize textarea_font"  rows="8" required></textarea>
+						</div>	
+				    </div>
+
+				  
+
+				     <div class="row"> 
+	                  	<div class="col-md-2 col-md-offset-5">
+	                    	<input type="button" id="notice_button_submmit" value="确定" class="btn btn-primary btn-lg button_font">
+	                  	</div>
+	                  	<div class="col-md-3">
+	                    	<input type="reset" id="button_reset" value="重置" class="btn btn-danger btn-lg button_font">
+	                  	</div>
+	                </div>
+		    	</form>
+		  	</div>
+		</div>
+
+	</div>
+
+    <script src="../asset/js/jquery-1.11.1.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src="../asset/js/jquery.cookie.js"></script>
+	 <script src="../asset/js/jquery-ui.custom.min.js"></script>
+	
+	<script  src="../asset/js/constant.js"></script>		<!-- 使用constant.js -->
+
+	<script src="../asset/js/getData.js"></script>
+
+	<script src="../asset/js/table.js"></script> 
+	<script src="../asset/js/jquery.dataTables.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="../asset/js/notices/addNotice.js"></script>
+  
+	
+</body>
+
+</html>

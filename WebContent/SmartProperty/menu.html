@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+    
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="asset/css/menu.css" rel="stylesheet">
+   
+</head>
+
+<body>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <ul id="main-nav" class="nav nav-tabs nav-stacked" style="">
+                    <li class="active">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-home"></i>
+                            首页 		
+                        </a>
+                    </li>
+					<!-- 一级 住宅楼管理-->
+					<li>
+                        <a href="#userhouseSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-credit-card"></i>
+                            客户管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+                        </a> 
+                        
+						<!-- 二级 -->
+                        <ul id="userhouseSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+						<!-- 二级 业主管理-->
+						<li>
+							<a href="#userhouseSetting1" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-credit-card"></i>
+								住宅楼管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+							</a> 
+							<ul id="userhouseSetting1" class="nav nav-list collapse thirdmenu" style="height: 0px;">
+								<li><a href="ownerManage/addRoomownerInfo.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;</i>客户迁入</a></li>
+								<li><a href="ownerManage/searchOwnerInfo.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;客户信息</a></li>
+								<li><a href="ownerManage/ownergo.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;客户迁出</a></li>  
+							</ul>
+						</li>
+						
+						<li>
+							<a href="#userhouseSetting3" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-credit-card"></i>
+								写字楼管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+							</a> 
+							
+							<ul id="userhouseSetting3" class="nav nav-list collapse thirdmenu" style="height: 0px;">
+								<li><a href="ownerManage/addRoomownerInfo.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;</i>客户迁入</a></li>
+								<li><a href="ownerManage/searchOwnerInfo.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;客户信息</a></li>
+								<li><a href="ownerManage/ownergo.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;客户迁出</a></li>  
+
+							</ul>
+						</li>
+                       </ul>
+					   
+					   
+                     
+					<!-- 一级 公告管理-->
+                    <li>
+                        <a href="#Announcementsetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-credit-card"></i>
+                            公告管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>	
+                        </a> 
+                        
+                        <ul id="Announcementsetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li><a href="notice/addNotice.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;添加公告</a></li>
+                            <li><a href="notice/checkNotice.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;查看公告</a></li>
+                      <!--    <li><a href="notice/sendLetter.html" target="main"><i class="glyphicon glyphicon-envelope"></i>&nbsp;&nbsp;致住户信</a></li>
+                        -->   
+                        </ul>
+                    </li>
+					<!-- 一级 报修管理-->
+                    <li>
+                        <a href="#RepairSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-wrench"></i>&nbsp;报修管理
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="RepairSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li><a href="Property/repair.html" target="main">
+                            <i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;添加报修</a></li>
+                            <li><a href="Property/checkRepair.html" target="main"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;处理报修</a></li> 
+							 <li><a href="Property/manageDevice.html" target="main">
+							<i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;管理设备</a></li>
+
+                            <!-- 
+							<li><a href="Property/checkRepair.html" target="main"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;报修反馈</a></li> 
+                      		 -->
+                        </ul>
+                    </li>
+
+					<!-- 一级 投诉管理-->
+					<li>
+                        <a href="#askSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-credit-card"></i>
+                            投诉管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+                        </a> 
+                        
+                        <ul id="askSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li><a href="demandManage/addDemands.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;</i>添加投诉</a></li>
+                            <li><a href="demandManage/handleDemands.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;投诉处理</a></li>
+                            <li><a href="demandManage/visitbackDemands.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;投诉反馈</a></li>
+                            
+                        </ul>
+                    </li>
+                    
+					<!-- 一级 房产管理-->
+					<li>
+                        <a href="#HouseSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-credit-card"></i>
+                            房产管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+                        </a> 
+                        <!-- 二级 -->
+                        <ul id="HouseSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+						<!-- 二级 房产管理-->
+						 <li>
+							<a href="#houseSetting" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-credit-card"></i>
+								楼宇管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+							</a> 
+                        
+							<ul id="houseSetting" class="nav nav-list collapse thirdmenu" style="height: 0px;">
+								<li><a href="house/addBuild.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;</i>添加楼宇</a></li>
+								 <li><a href="house/checkBuildList.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;楼宇信息</a></li>
+                            
+							</ul>
+						 </li>
+
+						 <!-- 二级 房产管理-->
+						 <li>
+							<a href="#roomSetting" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-credit-card"></i>
+								房屋管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+							</a> 
+                        
+							<ul id="roomSetting" class="nav nav-list collapse thirdmenu" style="height: 0px;">
+								<li><a href="house/addRoom.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;</i>添加房屋</a></li>
+                            <li><a href="house/checkRoom.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;房屋信息</a></li>
+                            
+							</ul>
+						 </li>
+
+
+							<!-- 二级 装修管理-->
+						 <li>
+							<a href="#DecorationSetting" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-credit-card"></i>
+								装修管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+							</a> 
+                        
+							<ul id="DecorationSetting" class="nav nav-list collapse thirdmenu" style="height: 0px;">
+								<li><a href="Decoration/addDecoration.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;</i>装修管理</a></li>
+
+								<li><a href="Decoration/addDecorationCosts.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;装修花费</a></li>
+
+								<li><a href="Decoration/decorationList.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;装修信息</a></li>
+                            
+							</ul>
+						 </li>
+                        </ul>
+                    </li>
+					
+					<!-- 一级 车位管理-->
+					<li>
+                        <a href="#parkingSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-credit-card"></i>
+                            车位管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+                        </a> 
+                        
+                        <ul id="parkingSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                            <li><a href="parking/parking.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;</i>车位管理</a></li>
+                            <li><a href="parking/parking.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;车位管理</a></li>
+                            
+                        </ul>
+                    </li>
+					<!-- 一级 费用管理-->
+					<li>
+                        <a href="#feeSetting" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-credit-card"></i>
+                            费用管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+                        </a> 
+                        
+                        <ul id="feeSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+						
+						<li>
+							<a href="#enter" class="nav-header collapsed" data-toggle="collapse">
+								<i class="glyphicon glyphicon-credit-card"></i>
+								抄表管理<span class="pull-right glyphicon glyphicon-chevron-down"></span>       
+							</a> 
+							
+							<ul id="enter" class="nav nav-list collapse thirdmenu" style="height: 0px;">
+								<li><a href="fee/addWatermeterInfo.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;</i>抄表录入</a></li>
+								<li><a href="fee/meterHistoryInfo.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;</i>抄表历史</a></li>
+
+							</ul>
+						</li>
+						
+						
+						
+						
+						<li>
+						<a href="#waterelectricfee" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-cog"></i>水电费用
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="waterelectricfee" class="nav nav-list collapse thirdmenu" style="height: 0px;">
+                            
+                             <li><a href="fee/ElectricityManage.html" target="main"><i class="glyphicon glyphicon-flash"></i>&nbsp;&nbsp;水电费系统</a></li>
+                        </ul>
+						</li>
+						<!-- 二级 物业费用-->
+						<li>
+						<a href="#Propertytfee" class="nav-header collapsed" data-toggle="collapse">
+                            <i class="glyphicon glyphicon-cog"></i>物业费用
+                            <span class="pull-right glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul id="Propertytfee" class="nav nav-list collapse thirdmenu" style="height: 0px;">
+                            
+                            <li><a href="fee/CostManage.html" target="main"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;&nbsp;</i>管理费用</a></li>
+                            <li><a href="fee/fee.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;装修押金</a></li>
+							<li><a href="fee/fee.html" target="main"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;停车费用</a></li>
+                        </ul>
+						</li>
+ 
+                        </ul>
+                    </li>
+
+					
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-fire"></i>
+                            关于系统
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="asset/js/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap3_2_0.min.js"></script>
+    
+</body>
+</html>

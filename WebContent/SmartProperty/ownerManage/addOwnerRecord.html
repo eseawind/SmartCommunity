@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>添加业主信息</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" /> 
+
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+	<link href="../asset/css/jquery-ui.css" rel="stylesheet">
+
+	 <style>
+      	.page-header {
+      		margin-top: -6px;
+      		font-size: 20px;
+      	}
+      	.panel-heading {
+      		font-size: 21px;
+      	}
+      	label {
+      		font-size: 18px;
+      	}
+      	.page-margintop {
+      		margin-top: 10px;
+      	}
+      	label {
+      		font-size: 14px;
+      	}
+      	.btn {
+      		margin-top: 25px;
+      		margin-left: 12px;
+      	}
+      	.row {
+       		margin-top: 16px;
+       }
+       .form-marginleft {
+       		margin-left: 50px;
+       }
+    </style>
+</head>
+<body style="padding-top: -10px;">
+
+	<div class="container-fluid">
+		<div class="panel panel-info">
+			<div class="panel-heading text-center">
+				<b>添加业主信息</b>
+			</div>
+			<div class="panel-body pull-center">
+				<form class="form-horizontal form-marginleft" name="ownerForm" role="form">
+					
+					<div class="row">
+						<div class="col-md-3 col-md-offset-1">
+							<label class="">楼栋/单元/室</label>
+							<input type="text" class="form-control" id="owner_buliding">
+						</div>
+						<div class="col-md-3 col-marginleft">
+							<label class="">产权人</label>
+							<input type="text" class="form-control" id="owner_name">
+						</div>
+						<div class="col-md-3 col-marginleft">
+							<label class="">身份证号</label>
+							<input type="text" class="form-control" id="owner_id">
+						</div>
+				    </div> 
+
+				    <div class="row">
+				    	<div class="col-md-3 col-md-offset-1">
+							<label class="">房屋面积(平米)</label>
+							<input type="text" class="form-control" id="owner_roomsize">
+						</div>
+						<div class="col-md-3 col-marginleft">
+							<label class="">入伙时间</label>
+							<input type="text" class="form-control" readonly id="owner_intime">
+						</div>	
+						<div class="col-md-3">
+							<label class="">原始装修</label>
+							<select id="first_fitment" class="form-control">
+								<option value="pleaseselect">---请选择---</option>	   
+							</select>
+						</div>
+				    </div>
+
+				    <div class="row">	
+						<div class="col-md-3 col-md-offset-1 pull-left">
+							<label class="">是否出租</label>
+							<div class="row">
+								<div class="col-md-11 pull-center">
+								   <input type="checkbox" id="whether_rental">
+								   <label class="">是否出租</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label class="">备注</label>
+							<textarea id="comments" class="form-control" class="input-textsize" placeholder="备注" rows="1" required></textarea>
+						</div>
+				    </div>
+
+				    <div class="row">
+				    	<div class="col-md-3 col-md-offset-5">
+							<button id="submit_Ownerinfo_button" type="button" class="btn btn-info btn-lg">提交</button>
+							<input type="reset" value="重置" class="btn btn-danger btn-lg">
+							
+						</div>
+				    </div>
+				</form>
+				    
+				
+			</div>			
+		</div>
+	</div>
+
+	<script src="../asset/js/jquery.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src="../asset/js/jquery-ui.custom.min.js"></script>
+	<script src="../asset/js/datePicker.js"></script>
+	<script src="../asset/js/ownerManage/addOwnerRecord.js"></script>
+	
+</body>
+
+</html>
